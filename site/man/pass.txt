@@ -1,0 +1,47 @@
+PASS(1)                           User Commands                          PASS(1)
+
+
+
+NAME
+       pass - Create and manage passwords
+
+SYNOPSIS
+       pass [--cipher bcrypt] [--file filename] [--password password] realm
+       username roles...
+
+
+DESCRIPTION
+       The pass program creates authentication passwords for the Ioto embedded
+       web server.
+
+            pass --file auth.json --password pass1 example.com joshua
+            administrator buyer
+
+            pass --password pass1 example.com joshua administrator buyer
+
+
+OPTIONS
+       --cipher bcrypt|sha256
+              Specifies the cipher to use to hash the password. Default is
+              Bcrypt. Blowfish is substantially more secure.
+
+       --password password
+              Specifies a password to use to for the user.
+
+       --file filename
+              Update the specified password configuration file.
+
+DESCRIPTION
+       The pass program is used to create and manage user passwords.
+
+REPORTING BUGS
+       Report bugs to dev@embedthis.com.
+
+COPYRIGHT
+       Copyright (c) Embedthis Software.
+
+SEE ALSO
+
+
+
+pass                                June 2022                            PASS(1)

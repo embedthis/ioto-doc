@@ -1,0 +1,4794 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        
+      
+      <link rel="icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9+insiders-4.21.0">
+    
+    
+      
+        <title>Web Server - Ioto Device Agent</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.846d444e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/all.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var _paq = window._paq = window._paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://embedthis.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='//cdn.matomo.cloud/embedthis.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+})
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-server-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+  <a href="https://www.embedthis.com">
+      <span><b>New Ioto release 1.0.0</b>,</span>
+  </a> &nbsp;
+  <a href="https://twitter.com/embedthat">
+    updates at <strong>@embedthat</strong> on
+    <span class="twemoji twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    Twitter
+  </a>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Ioto Device Agent" class="md-header__button md-logo" aria-label="Ioto Device Agent" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ioto Device Agent
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  Ioto Device Agent
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../overview/" class="md-tabs__link">
+          
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../user/background/" class="md-tabs__link">
+          
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../aws/" class="md-tabs__link">
+          
+  
+    
+  
+  AWS Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+  
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
+          
+  
+    
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://admin.embedthis.com/product" target="_blank" class="md-tabs__link">
+        
+  
+  Download
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com" target="_blank" class="md-tabs__link">
+        
+  
+  EmbedThis
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com/blog" target="_blank" class="md-tabs__link">
+        
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://admin.embedthis.com" target="_blank" class="md-tabs__link">
+        
+  
+  Builder
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com/builder/doc/" target="_blank" class="md-tabs__link">
+        
+  
+  Builder Doc
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Ioto Device Agent" class="md-nav__button md-logo" aria-label="Ioto Device Agent" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Ioto Device Agent
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Device Agent
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        
+        
+          <label class="md-nav__link" for="__nav_2">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Features
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start/uses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Cases
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Licensing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Project
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        
+        
+          <label class="md-nav__link" for="__nav_3">
+            
+  
+  <span class="md-ellipsis">
+    Developer Guide
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/background/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Background
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/building/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building from Source
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_5">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/initialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initialization
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user/properties/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Properties
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_6">
+            
+  
+  <span class="md-ellipsis">
+    Programming Ioto
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Programming Ioto" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Programming Ioto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/fiber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fiber Coroutines
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Allocation
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7">
+            
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Components" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_1" type="checkbox" id="__nav_3_7_1" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_1">
+            
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Database" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_1_2" type="checkbox" id="__nav_3_7_1_2" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_1_2">
+            
+  
+  <span class="md-ellipsis">
+    Schemas
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Schemas" data-md-level="4">
+          <label class="md-nav__title" for="__nav_3_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/schemas/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/schemas/indexes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indexes
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/schemas/params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Params
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/schemas/attributes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Attributes
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/persistency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Persistency
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replication
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Protocol
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON Parser
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL Client
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_5" type="checkbox" id="__nav_3_7_5" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_5">
+            
+  
+  <span class="md-ellipsis">
+    Safe Runtime
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Safe Runtime" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Safe Runtime
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/buf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Buf
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/fiber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fiber
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/hash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/socket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socket
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/thread/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtime/time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_6" type="checkbox" id="__nav_3_7_6" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_6">
+            
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Web Server" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Web Server
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_6_2" type="checkbox" id="__nav_3_7_6_2" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_6_2">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Configuration" data-md-level="4">
+          <label class="md-nav__title" for="__nav_3_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/properties/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Properties
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/listening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listening for Connections
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Routing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/dynamic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamic Content
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/uploading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Upload
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/tls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS / SSL
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/tlsOverview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../standards/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../aws/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AWS Integration
+  </span>
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" aria-label="AWS Integration" data-md-level="1">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            AWS Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/device-clouds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Device Clouds
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/provisioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provisioning Devices
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Syncronization
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/shadow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shadow State
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/keys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS IAM Access Keys
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS APIs and SigV4
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uploading data to S3
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log File Export
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch Metrics
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Messaging
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aws/cloudtrail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud Auditing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compatibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compatibility
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stability
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_5_4">
+            
+  
+  <span class="md-ellipsis">
+    APIs
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="APIs" data-md-level="2">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ioto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crypt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crypto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    O/S Layer
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safe Runtime
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedefs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typedefs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebUpload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedefs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typedefs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://admin.embedthis.com/product" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EmbedThis
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com/blog" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://admin.embedthis.com" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builder
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com/builder/doc/" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builder Doc
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedefs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typedefs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebUpload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typedefs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typedefs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="web-server-api">Web Server API</h1>
+<p>The web server library is a fast, compact web server designed for management web applications and serving device data.</p>
+<p>The web server does not attempt to offer ALL HTTP features and functions. Rather, it aims to implement only the required core of HTTP/1.1 and thus deliver a tiny, fast, secure embedded web server that is exceptionally good at serving single page web applications and device data.</p>
+<p>The web server supports: HTTP/1.0, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. The web server uses 80K of code and will run in 150K RAM (without TLS).</p>
+<p>The core web services include:</p>
+<ul>
+<li>HTTP/1.1 protocol engine</li>
+<li>TLS 1.3 support</li>
+<li>Non-blocking socket communications</li>
+<li>Multiple listen endpoints</li>
+<li>Flexible configuration via a web.json5 file</li>
+<li>Request routing with access control</li>
+<li>Binding URLs to C functions for dynamic content rendering</li>
+<li>Serve static files</li>
+<li>Configurable redirections</li>
+<li>Transfer encoding filter</li>
+<li>Session and cookie management</li>
+<li>Authentication and User management</li>
+<li>File upload</li>
+<li>JSON parser and query engine</li>
+<li>Sandbox limits and timeouts</li>
+<li>Paralelism via fiber coroutines</li>
+</ul>
+<p><a name="Extensions"></a></p>
+<h2 id="extensions">Extensions</h2>
+<table class="apiIndex" title="Extensions">
+<tr class="apiDef">
+<td class="apiName"><a href="#group___web" class="nameRef">Web</a></td>
+<td class="apiBrief">Embedded web server.</td></tr>
+<tr class="apiDef">
+<td class="apiName"><a href="#group___web_upload" class="nameRef">WebUpload</a></td>
+<td class="apiBrief">File upload structure.</td></tr>
+</table>
+<p><a name="Functions"></a></p>
+<h2 id="functions">Functions</h2>
+<table class="apiIndex" title="Functions">
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gabeea8c8679c4f58e978843c823ef69f6" class="nameRef">webAddAccessControlHeader</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Add an Access-Control-Allow-Origin response header for the request host name.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga219834e198ea0c633f437f5736cf9551" class="nameRef">webAddAction</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *url, <a href="#group___web_1ga6692799902b2e85966e1021aa3cb1540" class="ref">WebProc</a> fn, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Add an action callback for a URL prefix.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga86cd5378abd12d048c20b150ef955ee8" class="nameRef">webAddHeader</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *value, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Add a header to the request response.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="#struct_web_host" class="ref">WebHost*</a></td><td><a href="#group___web_1ga223e848641aa9c0b76ee5c0d45c1840c" class="nameRef">webAllocHost</a>(<a href="json.html#group___json" class="ref">Json</a> *config)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Allocate a new host object.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___web_1ga30cef128e3f9ac294e2fe73448c12f3c" class="nameRef">webAuthenticate</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Authenticate a user.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1gac4306df4bd906b73b98350c2beb755f4" class="nameRef">webBufferUntil</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *until, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> limit)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Read data and buffer until a given pattern or limit is reached.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___web_1ga7375b943fda9de7b738f234bd519bd88" class="nameRef">webCan</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Test if a user possesses the required role.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="#struct_web_session" class="ref">WebSession*</a></td><td><a href="#web_8h_1a818647b463136c3fba0a8d13a707a4c1" class="nameRef">webCreateSession</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Create a login session.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga4a17a3bbd3f1adea18582e481285896d" class="nameRef">webDate</a>(char *buf, <a href="r.html#r_8h_1aec517130c026730881898750d76e596f" class="ref">time_t</a> when)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Convert a time to a date string.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga60d76cc1e1b9ea8d0a590206b8fdc624" class="nameRef">webDecode</a>(char *str)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Decode a string using punycode.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#web_8h_1a164c57396ff5e8d6bd4dc7331847a9be" class="nameRef">webDestroySession</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Destroy the web session object.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga6ead35bdfb49e89fe19708937b144d70" class="nameRef">webEncode</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Encode a string using punycode.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1gab51d17ce507b6c73178560b4f702363b" class="nameRef">webError</a>(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *body, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Respond to the request with an error.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gaa1b625ec1407586d184636914f284dfe" class="nameRef">webExtendTimeout</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga06650984137cfde185bac06dd2a4f355" class="ref">Ticks</a> timeout)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Extend the request timeout.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gaa41ee8db9d8d8c7126adf0d551ba2481" class="nameRef">webFinalize</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Finalize response output.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga78eaf50db0c75414b91844080fad5248" class="nameRef">webFreeHost</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Free a host object.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___web_1gaf4686f399200c2c5e55d3152e7694120" class="nameRef">webGetConfig</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a configuration value.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___web_1ga8effb915ee4472962dc6b3bc001b571f" class="nameRef">webGetConfigBool</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a configuration value as a boolean.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1gaaf97ba580692909effce5c539c670010" class="nameRef">webGetConfigInt</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, int defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a configuration value as an integer.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___web_1ga339c4c2a609c30edca347021533f9041" class="nameRef">webGetDocs</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the web documents directory for a host.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga765efb1225b77558ac60fc075cfba493" class="nameRef">webGetHostName</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the host name of the endpoint serving the request.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="#struct_web_session" class="ref">WebSession*</a></td><td><a href="#web_8h_1abb297b3736ba9c35c0564b2ba4ad6ed2" class="nameRef">webGetSession</a>(<a href="#group___web" class="ref">Web</a> *web, int create)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the session state object for the current request.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#web_8h_1af33596e8d2da2015f240238f1e63876c" class="nameRef">webGetSessionID</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the session ID.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#web_8h_1a76a38fd34c70d66d22f8d3004ed4a646" class="nameRef">webGetSessionVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a session variable.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___web_1ga18ea86705c79d58e136c1808fc2b57f0" class="nameRef">webGetStatusMsg</a>(int status)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a status message corresponding to a HTTP status code.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___web_1ga8226eef9f0bd76816228119975ef770f" class="nameRef">webGetVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a request variable value.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga2ae8a93ddb8024d3bb2c1180eec793da" class="nameRef">webInit</a>(void)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Initialize the web module.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___web_1gae37fec0fc0eebea040f900f67e77a206" class="nameRef">webIsAuthenticated</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Test if the user has been authenticated.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga9af1be82d17d8f283fe86ddf285fd98b" class="nameRef">webLogin</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *username, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Login a user by creating session state.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga85313a553af93814d35f794ac9eace84" class="nameRef">webLogout</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Logout a user and remove the user login session.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga2a3736632e83d9a5a0afbde17df62f9d" class="nameRef">webNetError</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *msg, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Close the current request and issue no response.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga53e8e4b9dc2bc2ff2a2a53d56c499d96" class="nameRef">webNormalizePath</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Normalize a URL path.</td></tr>
+<tr class="apiDef"><td class="apiType">char*</td><td><a href="#group___web_1ga428a7db0684c101a3e215313556a3230" class="nameRef">webParseCookie</a>(<a href="#group___web" class="ref">Web</a> *web, char *name)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Parse a cookie header string and return a cookie value.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga6fcbaf7b87434c60d33f582a968ec678" class="nameRef">webParseUrl</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Parse a URL into its components.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1gab6843af41aa5abdaec4062d4a5f46a8b" class="nameRef">webRead</a>(<a href="#group___web" class="ref">Web</a> *web, char *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Read request body data.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1ga6dfabe4840504ef353f20be556e3476c" class="nameRef">webReadUntil</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *until, char *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Read request body data until a given pattern is reached.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gab55db6243c532ea20fb1980a280a148b" class="nameRef">webRedirect</a>(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Redirect the client to a new URL.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#web_8h_1a7bdc8213f0b18c58c38d6a255359ad76" class="nameRef">webRemoveSessionVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Remove a session variable.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gaa251b71a7b0db2d405ac6a9fa4a32166" class="nameRef">webRemoveVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Remove a request variable value.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga75799c0590d78555e708868889c70ebc" class="nameRef">webResponse</a>(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Write a response.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1ga7ae3c7826b60cdef9349cf59b46bf60c" class="nameRef">webSendFile</a>(<a href="#group___web" class="ref">Web</a> *web, int fd)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Write a file response.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga4797282525262923d468f3af6cc3b6c7" class="nameRef">webSetContentLength</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> len)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Set the content length for the response.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga05cb25220ec94bf582ea299eee87cf1d" class="nameRef">webSetHook</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host, <a href="#group___web_1gadcf8624d72deb71840d76e45465db7e4" class="ref">WebHook</a> hook)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Define a request hook.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#web_8h_1ada76df6088e72a0cb595b00ed4a72821" class="nameRef">webSetSessionVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Set a session variable name value.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga12ab5a43c00f2a54c787d653af51430a" class="nameRef">webSetStatus</a>(<a href="#group___web" class="ref">Web</a> *web, int status)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Set the response HTTP status code.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___web_1gac6462364b9bfa758c2836d2c777f1b2a" class="nameRef">webSetVar</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *value)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Set a request variable value.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga053137e15bebc93e6664f1bc703f3800" class="nameRef">webStartHost</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Start listening for requests on the host.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1ga327bd24de12ffea2bf9bebf6a0e6fdce" class="nameRef">webStopHost</a>(<a href="#struct_web_host" class="ref">WebHost</a> *host)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Stop listening for requests on the host.</td></tr>
+<tr class="apiDef"><td class="apiType">void</td><td><a href="#group___web_1gabb771e606ddfa0f521abe7eecfac2aa7" class="nameRef">webTerm</a>(void)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Initialize the web module.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___web_1gaf704f9f6fba7634a8dc9b9463b5d6f6a" class="nameRef">webValidatePath</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Validate a URL.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1ga9bb3b0c8b44804e8cc329ca946c39aaa" class="nameRef">webWrite</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga6e883c0b6ff36e912dc38634137dd68a" class="ref">cvoid</a> *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Write response data.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a></td><td><a href="#group___web_1ga687c501de9d22cd63087f961dda73cfb" class="nameRef">webWriteFmt</a>(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Write string response data.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___web_1ga7e98fb2c84cf8a8336ea56871a8e776a" class="nameRef">webWriteHeaders</a>(<a href="#group___web" class="ref">Web</a> *web)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Write request response headers.</td></tr>
+</table>
+<p><a name="Typedefs"></a></p>
+<h2 id="typedefs">Typedefs</h2>
+<table class="apiIndex" title="typedefs">
+<tr class="apiDef"><td class="apiName"><a href="#struct_web_action" class="nameRef">WebAction</a></td><td class="apiBrief">Action function bound to a URL prefix.</td></tr>
+<tr class="apiDef"><td class="apiName"><a href="#group___web_1gadcf8624d72deb71840d76e45465db7e4" class="nameRef">WebHook</a></td><td class="apiBrief">WebHook callback procedure.</td></tr>
+<tr class="apiDef"><td class="apiName"><a href="#struct_web_host" class="nameRef">WebHost</a></td><td class="apiBrief">Web host structure.</td></tr>
+<tr class="apiDef"><td class="apiName"><a href="#group___web_1ga6692799902b2e85966e1021aa3cb1540" class="nameRef">WebProc</a></td><td class="apiBrief"><a class="ref" href="#struct_web_action">WebAction</a> callback procedure.</td></tr>
+<tr class="apiDef"><td class="apiName"><a href="#struct_web_route" class="nameRef">WebRoute</a></td><td class="apiBrief">Routing object to match a request against a path prefix.</td></tr>
+</table>
+<p><a name="Defines"></a></p>
+<h2 id="defines">Defines</h2>
+<table class="apiIndex" title="Defines">
+<tr class="apiDef">
+<td>#define</td><td><a href="#web_8h_1aadbee7a78b63b7ebd0d63ded6922acdc" class="nameRef">WEB_CHUNK_DATA</a>&nbsp;&nbsp;&nbsp;2</td>
+</tr>
+<tr class="apiBrief"><td>&nbsp;</td><td>Start of chunk data.</td></tr>
+<tr class="apiDef">
+<td>#define</td><td><a href="#web_8h_1a92e14fbf703236d3ea2b94ede15c7dbc" class="nameRef">WEB_CHUNK_START</a>&nbsp;&nbsp;&nbsp;1</td>
+</tr>
+<tr class="apiBrief"><td>&nbsp;</td><td>Start of a new chunk.</td></tr>
+  </table>
+
+<h2 id="web">Web</h2>
+<p><a name="group___web"></a></p>
+<div class="api">
+  <div class="prototype">Web</div>
+  <div class="apiDetail">
+<p>Embedded web server.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The web server requires the use of fibers from the portable runtime.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>Fields:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>authChecked</td><td>
+Authentication has been checked.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>authenticated</td><td>
+User authenticated and roleId defined.
+</td>
+    <tr><td class="param">char *</td><td><td>boundary</td><td>
+Upload file boundary.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>boundaryLen</td><td>
+Length of the boundary.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>chunked</td><td>
+Receive transfer chunk encoding state.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>close</td><td>
+Should the connection be closed after the request completes.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>complete</td><td>
+Is the request complete.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>contentDisposition</td><td>
+Receive content disposition header value.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>contentType</td><td>
+Receive content type header value.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>cookie</td><td>
+Request cookie string.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>creatingHeaders</td><td>
+Are headers being created.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga06650984137cfde185bac06dd2a4f355" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">Ticks</a></td><td><td>deadline</td><td>
+Timeout deadline for when the next I/O must complete.
+</td>
+    <tr><td class="param">char *</td><td><td>error</td><td>
+Error string for any request errors.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>exists</td><td>
+Does the requested resource exist.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>ext</td><td>
+Request URL extension.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>formBody</td><td>
+Is the current request a POSTed form.
+</td>
+    <tr><td class="param"><a class="ref" href="#struct_web_host">WebHost</a> *</td><td><td>host</td><td>
+Owning host object.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>http10</td><td>
+Is the current request a HTTP/1.0 request.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>jsonBody</td><td>
+Is the current request a POSTed json request.
+</td>
+    <tr><td class="param">WebListen *</td><td><td>listen</td><td>
+Listening endpoint.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>method</td><td>
+Request method in upper case.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>mime</td><td>
+Request mime type based on the extension.
+</td>
+    <tr><td class="param">char *</td><td><td>path</td><td>
+Path portion of the request url.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>protocol</td><td>
+Request HTTP protocol. 
+Set to HTTP/1.0 or HTTP/1.1.
+</td>
+    <tr><td class="param">char *</td><td><td>query</td><td>
+Request URL query portion.
+</td>
+    <tr><td class="param">Json *</td><td><td>qvars</td><td>
+Parsed query variables.
+</td>
+    <tr><td class="param">char *</td><td><td>redirect</td><td>
+Response redirect location. 
+Used to set the Location header.
+</td>
+    <tr><td class="param">char *</td><td><td>ref</td><td>
+Request URL reference portion.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>role</td><td>
+Authorized role.
+</td>
+    <tr><td class="param">int</td><td><td>roleId</td><td>
+Index into roles for the authorized role.
+</td>
+    <tr><td class="param"><a class="ref" href="#struct_web_route">WebRoute</a> *</td><td><td>route</td><td>
+Matching route for this request.
+</td>
+    <tr><td class="param">RBuf *</td><td><td>rx</td><td>
+Receive data buffer.
+</td>
+    <tr><td class="param">char *</td><td><td>rxHeaderBuf</td><td>
+Buffer containing the full request.
+</td>
+    <tr><td class="param">char *</td><td><td>rxHeaders</td><td>
+Request received headers.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>rxLen</td><td>
+Receive content length.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7bac74916a564105339bcd5a9323c366" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">Offset</a></td><td><td>rxRemaining</td><td>
+Receive data remaining in the next chunk.
+</td>
+    <tr><td class="param">struct WebSession *</td><td><td>session</td><td>
+Session state.
+</td>
+    <tr><td class="param">int</td><td><td>signature</td><td>
+Index into signature definition for this request.
+</td>
+    <tr><td class="param">time_t</td><td><td>since</td><td>
+Value of the if-modified-since value in seconds since epoch.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga06650984137cfde185bac06dd2a4f355" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">Ticks</a></td><td><td>started</td><td>
+Time when the request started.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>status</td><td>
+Request response HTTP status code.
+</td>
+    <tr><td class="param">RBuf *</td><td><td>tx</td><td>
+Write data buffer.
+</td>
+    <tr><td class="param">RHash *</td><td><td>txHeaders</td><td>
+Output headers.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>txLen</td><td>
+Transmit content length.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7bac74916a564105339bcd5a9323c366" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">Offset</a></td><td><td>txRemaining</td><td>
+Transmit data remaining to send.
+</td>
+    <tr><td class="param">WebUpload *</td><td><td>upload</td><td>
+Current uploading file.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>uploadDir</td><td>
+Directory to place uploaded files.
+</td>
+    <tr><td class="param">RHash *</td><td><td>uploads</td><td>
+Table of uploaded files for this request.
+</td>
+    <tr><td class="param">char *</td><td><td>url</td><td>
+Request url.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>username</td><td>
+Username.
+</td>
+    <tr><td class="param">Json *</td><td><td>vars</td><td>
+Parsed request variables.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>wroteHeaders</td><td>
+Have the response headers been written.
+</td>
+    </table></dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gabeea8c8679c4f58e978843c823ef69f6"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webAddAccessControlHeader
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Add an Access-Control-Allow-Origin response header for the request host name.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga219834e198ea0c633f437f5736cf9551"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webAddAction
+(<a href="#struct_web_host" class="ref">WebHost</a> *host, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *url, <a href="#group___web_1ga6692799902b2e85966e1021aa3cb1540" class="ref">WebProc</a> fn, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)
+  </div>
+  <div class="apiDetail">
+<p>Add an action callback for a URL prefix.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td>Host object.</td>
+    <tr><td class="param">url</td><td>URL prefix to associate with this action.</td>
+    <tr><td class="param">fn</td><td>Function to invoke for requests matching this URL.</td>
+    <tr><td class="param">role</td><td>Authorized role when the action is invoked.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga86cd5378abd12d048c20b150ef955ee8"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webAddHeader
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *value, ...)
+  </div>
+  <div class="apiDetail">
+<p>Add a header to the request response.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">key</td><td>HTTP header name.</td>
+    <tr><td class="param">value</td><td>Format string for the header value.</td>
+    <tr><td class="param">...</td><td>Format arguments.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga223e848641aa9c0b76ee5c0d45c1840c"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="#struct_web_host" class="ref">WebHost</a> *
+    webAllocHost
+(<a href="json.html#group___json" class="ref">Json</a> *config)
+  </div>
+  <div class="apiDetail">
+<p>Allocate a new host object.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">config</td><td>JSON configuration for the host.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>A host object.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga30cef128e3f9ac294e2fe73448c12f3c"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    webAuthenticate
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Authenticate a user.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The user is authenticated if required by the selected request route.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>True if the route does not require authentication or the user is authenticated successfully.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gac4306df4bd906b73b98350c2beb755f4"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webBufferUntil
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *until, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> limit)
+  </div>
+  <div class="apiDetail">
+<p>Read data and buffer until a given pattern or limit is reached.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This reads the data into the buffer, but does not return the data or consume it.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">until</td><td>Pattern to read until. Set to NULL for no pattern.</td>
+    <tr><td class="param">limit</td><td>Number of bytes of data to read. Set to.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes read into the buffer. Return zero if no bytes read and negative for errors.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga7375b943fda9de7b738f234bd519bd88"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    webCan
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)
+  </div>
+  <div class="apiDetail">
+<p>Test if a user possesses the required role.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">role</td><td>Required role.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>True if the user has the required role.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga4a17a3bbd3f1adea18582e481285896d"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webDate
+(char *buf, <a href="r.html#r_8h_1aec517130c026730881898750d76e596f" class="ref">time_t</a> when)
+  </div>
+  <div class="apiDetail">
+<p>Convert a time to a date string.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">buf</td><td>Buffer to hold the generated date string.</td>
+    <tr><td class="param">when</td><td>Timestamp to convert.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>A reference to the buffer.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga60d76cc1e1b9ea8d0a590206b8fdc624"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webDecode
+(char *str)
+  </div>
+  <div class="apiDetail">
+<p>Decode a string using punycode.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The string is converted in-situ.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">str</td><td>String to decode.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The string reference.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga6ead35bdfb49e89fe19708937b144d70"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webEncode
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)
+  </div>
+  <div class="apiDetail">
+<p>Encode a string using punycode.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The string is converted in-situ.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">uri</td><td>Uri to encode.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>An allocated, escaped URI. Caller must free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gab51d17ce507b6c73178560b4f702363b"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webError
+(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *body, ...)
+  </div>
+  <div class="apiDetail">
+<p>Respond to the request with an error.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This responds to the request with the given HTTP status and body data.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">status</td><td>HTTP response status code.</td>
+    <tr><td class="param">body</td><td>Body data to send as the response. This is a printf style string.</td>
+    <tr><td class="param">...</td><td>Body response arguments.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Zero if successful.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaa1b625ec1407586d184636914f284dfe"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webExtendTimeout
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga06650984137cfde185bac06dd2a4f355" class="ref">Ticks</a> timeout)
+  </div>
+  <div class="apiDetail">
+<p>Extend the request timeout.</p>
+    <dl><dt><b>Description</b>:</dt><dd>Request duration is bounded by the timeouts.request and timeouts.inactivity limits. You can extend the timeout for a long running request via this call.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">timeout</td><td>Timeout in milliseconds use for both the request and inactivity timeouts for this request.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaa41ee8db9d8d8c7126adf0d551ba2481"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webFinalize
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Finalize response output.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will call webWrite(web, NULL, 0);.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga78eaf50db0c75414b91844080fad5248"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webFreeHost
+(<a href="#struct_web_host" class="ref">WebHost</a> *host)
+  </div>
+  <div class="apiDetail">
+<p>Free a host object.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td>Host object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaf4686f399200c2c5e55d3152e7694120"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webGetConfig
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)
+  </div>
+  <div class="apiDetail">
+<p>Get a configuration value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">key</td><td>Property key value. May use dot separated properties.</td>
+    <tr><td class="param">defaultValue</td><td>Default value to return if the key is not found.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The configuration value or the defaultValue if not found. Caller must not free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga8effb915ee4472962dc6b3bc001b571f"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    webGetConfigBool
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)
+  </div>
+  <div class="apiDetail">
+<p>Get a configuration value as a boolean.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">key</td><td>Property key value. May use dot separated properties.</td>
+    <tr><td class="param">defaultValue</td><td>Default value to return if the key is not found.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The configuration value or the defaultValue if not found. Caller must not free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaaf97ba580692909effce5c539c670010"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webGetConfigInt
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, int defaultValue)
+  </div>
+  <div class="apiDetail">
+<p>Get a configuration value as an integer.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">key</td><td>Property key value. May use dot separated properties.</td>
+    <tr><td class="param">defaultValue</td><td>Default value to return if the key is not found.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The configuration value or the defaultValue if not found. Caller must not free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga339c4c2a609c30edca347021533f9041"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webGetDocs
+(<a href="#struct_web_host" class="ref">WebHost</a> *host)
+  </div>
+  <div class="apiDetail">
+<p>Get the web documents directory for a host.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This is configured via the web.documents configuration property.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td>Host object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The web documents directory.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga765efb1225b77558ac60fc075cfba493"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webGetHostName
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Get the host name of the endpoint serving the request.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This will return the <a class="ref" href="#struct_web_host">WebHost</a> name if defined, otherwise it will use the listening endpoint. If all else fails, it will use the socket IP address.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Allocated string containing the host name. Caller must free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga18ea86705c79d58e136c1808fc2b57f0"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webGetStatusMsg
+(int status)
+  </div>
+  <div class="apiDetail">
+<p>Get a status message corresponding to a HTTP status code.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">status</td><td>HTTP status code.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>A status message. Caller must not free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga8226eef9f0bd76816228119975ef770f"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webGetVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)
+  </div>
+  <div class="apiDetail">
+<p>Get a request variable value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">name</td><td>Variable name.</td>
+    <tr><td class="param">defaultValue</td><td>Default value to return if the variable is not defined.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The value of the variable or the default value if not defined.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga2ae8a93ddb8024d3bb2c1180eec793da"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webInit
+(void )
+  </div>
+  <div class="apiDetail">
+<p>Initialize the web module.</p>
+    <dl><dt><b>Description</b>:</dt><dd>Must call before using Web.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gae37fec0fc0eebea040f900f67e77a206"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    webIsAuthenticated
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Test if the user has been authenticated.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>True if the user has been authenticated.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga9af1be82d17d8f283fe86ddf285fd98b"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webLogin
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *username, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *role)
+  </div>
+  <div class="apiDetail">
+<p>Login a user by creating session state.</p>
+Assumes the caller has already authenticated and authorized the user
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">username</td><td>User name.</td>
+    <tr><td class="param">role</td><td>Requested role.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga85313a553af93814d35f794ac9eace84"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webLogout
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Logout a user and remove the user login session.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga2a3736632e83d9a5a0afbde17df62f9d"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webNetError
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *msg, ...)
+  </div>
+  <div class="apiDetail">
+<p>Close the current request and issue no response.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This closes the request connection and issues no response. It should be used when a request is received that indicates the connection is compromised.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">msg</td><td>Message to the error log. This is a printf style string.</td>
+    <tr><td class="param">...</td><td>Message response arguments.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Zero if successful.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga53e8e4b9dc2bc2ff2a2a53d56c499d96"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webNormalizePath
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path)
+  </div>
+  <div class="apiDetail">
+<p>Normalize a URL path.</p>
+    <dl><dt><b>Description</b>:</dt><dd>Normalize a path to remove &quot;./&quot;, &quot;../&quot; and redundant separators. This does not make an absolute path and does not map separators or change case. This validates the path and expects it to begin with &quot;/&quot;.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">path</td><td>Path string to normalize.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>An allocated path. Caller must free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga428a7db0684c101a3e215313556a3230"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webParseCookie
+(<a href="#group___web" class="ref">Web</a> *web, char *name)
+  </div>
+  <div class="apiDetail">
+<p>Parse a cookie header string and return a cookie value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">name</td><td>Cookie name to extract.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The cookie value or NULL if not defined.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga6fcbaf7b87434c60d33f582a968ec678"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webParseUrl
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Parse a URL into its components.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The parsed components are defined in the Web object including the path, extension (ext),.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Zero if successful.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gab6843af41aa5abdaec4062d4a5f46a8b"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webRead
+(<a href="#group___web" class="ref">Web</a> *web, char *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)
+  </div>
+  <div class="apiDetail">
+<p>Read request body data.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will read the body data and return the number of bytes read. This routine will block the current fiber if necessary. Other fibers continue to run.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">buf</td><td>Data buffer to read into.</td>
+    <tr><td class="param">bufsize</td><td>Size of the buffer.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes read. Return &lt; 0 for errors and 0 when all the body data has been read.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga6dfabe4840504ef353f20be556e3476c"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webReadUntil
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *until, char *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)
+  </div>
+  <div class="apiDetail">
+<p>Read request body data until a given pattern is reached.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will read the body data and return the number of bytes read. This routine will block the current fiber if necessary. Other fibers continue to run.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">until</td><td>Pattern to read until. Set to NULL for no pattern.</td>
+    <tr><td class="param">buf</td><td>Data buffer to read into.</td>
+    <tr><td class="param">bufsize</td><td>Size of the buffer.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes read. Return &lt; 0 for errors and 0 when all the body data has been read.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Internal.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gab55db6243c532ea20fb1980a280a148b"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webRedirect
+(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)
+  </div>
+  <div class="apiDetail">
+<p>Redirect the client to a new URL.</p>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">status</td><td>HTTP status code. Must set to 301 or 302.</td>
+    <tr><td class="param">uri</td><td>URL to redirect the client toward.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaa251b71a7b0db2d405ac6a9fa4a32166"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webRemoveVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name)
+  </div>
+  <div class="apiDetail">
+<p>Remove a request variable value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">name</td><td>Variable name.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga75799c0590d78555e708868889c70ebc"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webResponse
+(<a href="#group___web" class="ref">Web</a> *web, int status, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)
+  </div>
+  <div class="apiDetail">
+<p>Write a response.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine writes a single plain text response in one API. It will block the current fiber if necessary. Other fibers continue to run. This will set the Content-Type header to text/plain.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">status</td><td>HTTP status code.</td>
+    <tr><td class="param">fmt</td><td>Printf style message string.</td>
+    <tr><td class="param">...</td><td>Format arguments.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes written.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga7ae3c7826b60cdef9349cf59b46bf60c"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webSendFile
+(<a href="#group___web" class="ref">Web</a> *web, int fd)
+  </div>
+  <div class="apiDetail">
+<p>Write a file response.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will read the contents of the open file descriptor and send as a response. This routine will block the current fiber if necessary. Other fibers continue to run.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">fd</td><td>File descriptor for an open file or pipe.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes written.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga4797282525262923d468f3af6cc3b6c7"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webSetContentLength
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> len)
+  </div>
+  <div class="apiDetail">
+<p>Set the content length for the response.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">len</td><td>Content length.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga05cb25220ec94bf582ea299eee87cf1d"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webSetHook
+(<a href="#struct_web_host" class="ref">WebHost</a> *host, <a href="#group___web_1gadcf8624d72deb71840d76e45465db7e4" class="ref">WebHook</a> hook)
+  </div>
+  <div class="apiDetail">
+<p>Define a request hook.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The request hook will be invoked for important request events during the lifecycle of processing the request.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td><a class="ref" href="#struct_web_host">WebHost</a> object.</td>
+    <tr><td class="param">hook</td><td>Callback hook function.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga12ab5a43c00f2a54c787d653af51430a"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webSetStatus
+(<a href="#group___web" class="ref">Web</a> *web, int status)
+  </div>
+  <div class="apiDetail">
+<p>Set the response HTTP status code.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">status</td><td>HTTP status code.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gac6462364b9bfa758c2836d2c777f1b2a"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webSetVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *value)
+  </div>
+  <div class="apiDetail">
+<p>Set a request variable value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">name</td><td>Variable name.</td>
+    <tr><td class="param">value</td><td>Value to set.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The value defined in the environment. Caller must NOT free the result.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga053137e15bebc93e6664f1bc703f3800"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webStartHost
+(<a href="#struct_web_host" class="ref">WebHost</a> *host)
+  </div>
+  <div class="apiDetail">
+<p>Start listening for requests on the host.</p>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td>Host object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Zero if successful.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga327bd24de12ffea2bf9bebf6a0e6fdce"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webStopHost
+(<a href="#struct_web_host" class="ref">WebHost</a> *host)
+  </div>
+  <div class="apiDetail">
+<p>Stop listening for requests on the host.</p>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">host</td><td>Host object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gabb771e606ddfa0f521abe7eecfac2aa7"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webTerm
+(void )
+  </div>
+  <div class="apiDetail">
+<p>Initialize the web module.</p>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1gaf704f9f6fba7634a8dc9b9463b5d6f6a"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    webValidatePath
+(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *uri)
+  </div>
+  <div class="apiDetail">
+<p>Validate a URL.</p>
+    <dl><dt><b>Description</b>:</dt><dd>Check a url for invalid characters.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">uri</td><td>Url path.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>True if the url contains only valid characters.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga9bb3b0c8b44804e8cc329ca946c39aaa"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webWrite
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga6e883c0b6ff36e912dc38634137dd68a" class="ref">cvoid</a> *buf, <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a> bufsize)
+  </div>
+  <div class="apiDetail">
+<p>Write response data.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will block the current fiber if necessary. Other fibers continue to run. Writing a null buffer or zero bufsize indicates there is no more output. The webFinalize API is a convenience call for this purpose.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">buf</td><td>Buffer of data to write.</td>
+    <tr><td class="param">bufsize</td><td>Size of the buffer to write.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes written.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga687c501de9d22cd63087f961dda73cfb"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" class="ref">ssize</a>
+    webWriteFmt
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)
+  </div>
+  <div class="apiDetail">
+<p>Write string response data.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This routine will block the current fiber if necessary. Other fibers continue to run.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">fmt</td><td>Printf style message string.</td>
+    <tr><td class="param">...</td><td>Format arguments.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes written.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga7e98fb2c84cf8a8336ea56871a8e776a"></a></p>
+<div class="api">
+  <div class="prototype">
+    int
+    webWriteHeaders
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Write request response headers.</p>
+    <dl><dt><b>Description</b>:</dt><dd>This will write the HTTP response headers. This writes the supplied headers and any required headers if not supplied. This routine will block the current fiber if necessary. Other fibers continue to run.</dd></dl>
+    <dl><dt></dt><dd>Must only be called from a fiber.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The number of bytes written.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+
+<h2 id="webupload">WebUpload</h2>
+<p><a name="group___web_upload"></a></p>
+<div class="api">
+  <div class="prototype">WebUpload</div>
+  <div class="apiDetail">
+<p>File upload structure.</p>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+    <dl><dt>Fields:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">char *</td><td><td>clientFilename</td><td>
+Client side name of the file.
+</td>
+    <tr><td class="param">char *</td><td><td>contentType</td><td>
+Content type.
+</td>
+    <tr><td class="param">int</td><td><td>fd</td><td>
+File descriptor used while writing the upload content.
+</td>
+    <tr><td class="param">char *</td><td><td>filename</td><td>
+Local (temp) name of the file.
+</td>
+    <tr><td class="param">char *</td><td><td>name</td><td>
+Symbolic name for the upload supplied by the client.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>size</td><td>
+Uploaded file size.
+</td>
+    </table></dd></dl>
+  </div>
+</div>
+
+<h2 id="functions_1">Functions</h2>
+<p><a name="web_8h_1a818647b463136c3fba0a8d13a707a4c1"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="#struct_web_session" class="ref">WebSession</a> *
+    webCreateSession
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Create a login session.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Allocated session object.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1a164c57396ff5e8d6bd4dc7331847a9be"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webDestroySession
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Destroy the web session object.</p>
+    <dl><dt><b>Description</b>:</dt><dd>Useful to be called as part of the user logout process.</dd></dl>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Prototype.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1abb297b3736ba9c35c0564b2ba4ad6ed2"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="#struct_web_session" class="ref">WebSession</a> *
+    webGetSession
+(<a href="#group___web" class="ref">Web</a> *web, int create)
+  </div>
+  <div class="apiDetail">
+<p>Get the session state object for the current request.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">create</td><td>Set to true to create a new session if one does not already exist.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Session object.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1af33596e8d2da2015f240238f1e63876c"></a></p>
+<div class="api">
+  <div class="prototype">
+    char *
+    webGetSessionID
+(<a href="#group___web" class="ref">Web</a> *web)
+  </div>
+  <div class="apiDetail">
+<p>Get the session ID.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The session ID if session state storage is defined for this request. Caller must free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1a76a38fd34c70d66d22f8d3004ed4a646"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webGetSessionVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *defaultValue)
+  </div>
+  <div class="apiDetail">
+<p>Get a session variable.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">name</td><td>Session variable name.</td>
+    <tr><td class="param">defaultValue</td><td>Default value to return if the variable does not exist.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>Session variable value or default value if it does not exist.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1a7bdc8213f0b18c58c38d6a255359ad76"></a></p>
+<div class="api">
+  <div class="prototype">
+    void
+    webRemoveSessionVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name)
+  </div>
+  <div class="apiDetail">
+<p>Remove a session variable.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">name</td><td>Session variable name.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+<p><a name="web_8h_1ada76df6088e72a0cb595b00ed4a72821"></a></p>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *
+    webSetSessionVar
+(<a href="#group___web" class="ref">Web</a> *web, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *name, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *fmt, ...)
+  </div>
+  <div class="apiDetail">
+<p>Set a session variable name value.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web request object.</td>
+    <tr><td class="param">name</td><td>Session variable name.</td>
+    <tr><td class="param">fmt</td><td>Format string for the value.</td>
+    <tr><td class="param">...</td><td>Format args.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>The value set for the variable. Caller must not free.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+  </div>
+</div>
+
+<h2 id="typedefs_1">Typedefs</h2>
+<p><a name="group___web_1gadcf8624d72deb71840d76e45465db7e4"></a></p>
+<div class="api">
+  <div class="prototype">
+    typedef void(* WebHook) (struct Web *web, int event).
+  </div>
+  <div class="apiDetail">
+<p>WebHook callback procedure.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    <tr><td class="param">event</td><td>ID of the event.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="group___web_1ga6692799902b2e85966e1021aa3cb1540"></a></p>
+<div class="api">
+  <div class="prototype">
+    typedef void(* WebProc) (struct Web *web).
+  </div>
+  <div class="apiDetail">
+<p><a class="ref" href="#struct_web_action">WebAction</a> callback procedure.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">web</td><td>Web object.</td>
+    </table></dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<p><a name="struct_web_action"></a></p>
+<div class="api">
+  <div class="prototype">WebAction</div>
+  <div class="apiDetail">
+<p>Action function bound to a URL prefix.</p>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>Fields:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param"><a class="ref" href="#group___web_1ga6692799902b2e85966e1021aa3cb1540">WebProc</a></td><td><td>fn</td><td>
+Function to invoke.
+</td>
+    <tr><td class="param">char *</td><td><td>match</td><td>
+Path prefix.
+</td>
+    <tr><td class="param">char *</td><td><td>role</td><td>
+Role to invoke action.
+</td>
+    </table></dd></dl>
+  </div>
+</div>
+<p><a name="struct_web_host"></a></p>
+<div class="api">
+  <div class="prototype">WebHost</div>
+  <div class="apiDetail">
+<p>Web host structure.</p>
+    <dl><dt><b>Description</b>:</dt><dd>The web host defines a web server and its configuration. Multiple web hosts can be created.</dd></dl>
+    <dl><dt>Fields:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">RList *</td><td><td>actions</td><td>
+Ordered list of configured actions.
+</td>
+    <tr><td class="param">Json *</td><td><td>config</td><td>
+Web server configuration for this host.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>connections</td><td>
+Number of active connections.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>freeConfig</td><td>
+Config is allocated and must be freed.
+</td>
+    <tr><td class="param">int</td><td><td>headers</td><td>
+Base ID for headers in config.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___web_1gadcf8624d72deb71840d76e45465db7e4">WebHook</a></td><td><td>hook</td><td>
+Web notification hook.
+</td>
+    <tr><td class="param">int</td><td><td>inactivityTimeout</td><td>
+Timeout for inactivity on a connection.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>index</td><td>
+Index file to use for directory requests.
+</td>
+    <tr><td class="param">RList *</td><td><td>listeners</td><td>
+Listening endpoints for this host.
+</td>
+    <tr><td class="param">int64</td><td><td>maxBody</td><td>
+Max size of POST request.
+</td>
+    <tr><td class="param">int64</td><td><td>maxConnections</td><td>
+Max number of connections.
+</td>
+    <tr><td class="param">int64</td><td><td>maxHeader</td><td>
+Max header size.
+</td>
+    <tr><td class="param">int64</td><td><td>maxSessions</td><td>
+Max number of sessions.
+</td>
+    <tr><td class="param">int64</td><td><td>maxUpload</td><td>
+Max size of file upload.
+</td>
+    <tr><td class="param">RHash *</td><td><td>mimeTypes</td><td>
+Mime types indexed by extension.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>name</td><td>
+Host name to use in canonical redirects.
+</td>
+    <tr><td class="param">int</td><td><td>parseTimeout</td><td>
+Timeout while parsing a request.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>removeUploads</td><td>
+Remove uploads when request completes (default).
+</td>
+    <tr><td class="param">int</td><td><td>requestTimeout</td><td>
+Total request timeout.
+</td>
+    <tr><td class="param">int</td><td><td>roles</td><td>
+Base ID of roles in config.
+</td>
+    <tr><td class="param">RList *</td><td><td>routes</td><td>
+Ordered list of configured routes.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>sameSite</td><td>
+Cookie same site property.
+</td>
+    <tr><td class="param">REvent</td><td><td>sessionEvent</td><td>
+Session timer event.
+</td>
+    <tr><td class="param">RHash *</td><td><td>sessions</td><td>
+Client session state.
+</td>
+    <tr><td class="param">int</td><td><td>sessionTimeout</td><td>
+Inactivity timeout for session state.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>uploadDir</td><td>
+Directory to receive uploaded files.
+</td>
+    <tr><td class="param">RHash *</td><td><td>users</td><td>
+Hash table of users.
+</td>
+    <tr><td class="param">RList *</td><td><td>webs</td><td>
+Active web requests for this host.
+</td>
+    </table></dd></dl>
+  </div>
+</div>
+<p><a name="struct_web_route"></a></p>
+<div class="api">
+  <div class="prototype">WebRoute</div>
+  <div class="apiDetail">
+<p>Routing object to match a request against a path prefix.</p>
+    <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>Fields:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>exact</td><td>
+Exact match vs prefix match. 
+If trailing &quot;/&quot; in route.
+</td>
+    <tr><td class="param">char *</td><td><td>match</td><td>
+Path prefix.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>redirect</td><td>
+Redirection if not authorized.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>role</td><td>
+Required user role.
+</td>
+    </table></dd></dl>
+  </div>
+</div>
+
+
+
+  
+
+
+
+              
+            </article>
+            
+<script>var input,hash=location.hash.slice(1);hash.startsWith("__tabbed_")&&((input=document.getElementById(hash)).checked=!0)</script>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../url/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HTTP Client" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              HTTP Client
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/embedthis/ioto" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/embedthat" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/embedthis" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/embedthis" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.15234abc.min.js"></script>
+      
+    
+
+  </body>
+</html>

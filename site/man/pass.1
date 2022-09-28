@@ -1,0 +1,40 @@
+.TH PASS "1" "June 2022" "pass" "User Commands"
+.SH NAME
+pass \- Create and manage passwords
+.SH SYNOPSIS
+.B pass
+[\fI--cipher bcrypt\fR]
+[\fI--file filename\fR]
+[\fI--password password\fR]
+realm username roles...
+
+.SH DESCRIPTION
+The pass program creates authentication passwords for the Ioto embedded web server.
+
+.RS 5
+pass --file auth.json --password pass1 example.com joshua administrator buyer
+.RE
+
+.RS 5
+pass --password pass1 example.com joshua administrator buyer
+.RE
+
+.SH OPTIONS
+.TP
+\fB\--cipher bcrypt|sha256\fR
+Specifies the cipher to use to hash the password. Default is Bcrypt. Blowfish is substantially more secure.
+.TP
+\fB\--password password\fR
+Specifies a password to use to for the user.
+.TP
+\fB\--file filename\fR
+Update the specified password configuration file.
+.PP
+.SH DESCRIPTION
+The pass program is used to create and manage user passwords.
+.SH "REPORTING BUGS"
+Report bugs to dev@embedthis.com.
+.SH COPYRIGHT
+Copyright (c) Embedthis Software.
+.br
+.SH "SEE ALSO"

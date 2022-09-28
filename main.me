@@ -1,0 +1,29 @@
+/*
+    main.me -- Main MakeMe File for the Ioto Doc
+ */
+
+Me.load({
+    settings: {
+        platforms: [ 'local' ],
+    },
+    targets: {
+        serve: {
+            action: `run('mkdocs serve')`
+        },
+        api: {
+            action: `
+                /*
+                    For packages, use the doxygen HTML directly from paks
+                 */
+                let base = me.dir.paks.join('*/doc')
+                let files = Path().files(base.join('api/*.html'))
+                for each (src in files) {
+                    let stub = Path('stubs').join(src.basename.replaceExt('md'))
+                    let dest = Path('docs/ref/api').join(src.basename.replaceExt('md'))
+                    stub.copy(dest)
+                    apiLayout(src, dest, {fixup: 'md'})
+                }
+            `
+        }
+    }
+})

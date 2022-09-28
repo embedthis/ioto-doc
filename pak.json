@@ -1,0 +1,51 @@
+{
+    "name": "ioto",
+    "title": "Ioto",
+    "description": "Ioto Device agent",
+    "version": "1.0.0",
+    "keywords": [
+        "ioto",
+        "Embedthis"
+    ],
+    "homepage": "https://www.embedthis.com/",
+    "author": {
+        "name": "Embedthis Inc.",
+        "email": "dev@embedthis.com",
+        "url": "https://www.embedthis.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/embedthis/ioto.git"
+    },
+    "bugs": {
+        "email": "dev@embedthis.com",
+        "url": "http://github.com/embedthis/ioto/issues"
+    },
+    "license": "Commercial",
+    "dependencies": {
+        "crypt": "~1",
+        "db": "~1.0",
+        "ioto": "~1.0",
+        "json": "~1",
+        "mbedtls": "~2",
+        "mqtt": "~1",
+        "osdep": "~1",
+        "r": "~1",
+        "uctx": "~1",
+        "url": "~1",
+        "web": "~1"
+    },
+    "optionalDependencies": {
+        "certs": "~1",
+        "ssl": "~1"
+    },
+    "devDependencies": {
+        "makeme": ">=0.9.0",
+        "pak": ">=0.11.1"
+    },
+    "files": [
+        "dist/",
+        "doc/api/"
+    ],
+    "import": true
+}

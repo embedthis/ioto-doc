@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block announce %}
+  <a href="https://www.embedthis.com">
+      <span><b>New Ioto release 1.0.0</b>,</span>
+  </a> &nbsp;
+  <a href="https://twitter.com/embedthat">
+    updates at <strong>@embedthat</strong> on
+    <span class="twemoji twitter">
+        {% include ".icons/fontawesome/brands/twitter.svg" %}
+    </span>
+    Twitter
+  </a>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}

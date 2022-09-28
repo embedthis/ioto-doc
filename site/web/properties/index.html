@@ -1,0 +1,4680 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9+insiders-4.21.0">
+    
+    
+      
+        <title>Properties - Ioto Device Agent</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.846d444e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/all.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var _paq = window._paq = window._paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://embedthis.matomo.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='//cdn.matomo.cloud/embedthis.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+})
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#properties" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+  <a href="https://www.embedthis.com">
+      <span><b>New Ioto release 1.0.0</b>,</span>
+  </a> &nbsp;
+  <a href="https://twitter.com/embedthat">
+    updates at <strong>@embedthat</strong> on
+    <span class="twemoji twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    Twitter
+  </a>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ioto Device Agent" class="md-header__button md-logo" aria-label="Ioto Device Agent" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ioto Device Agent
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Properties
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  Ioto Device Agent
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+  
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user/background/" class="md-tabs__link md-tabs__link--active">
+          
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aws/" class="md-tabs__link">
+          
+  
+    
+  
+  AWS Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ref/" class="md-tabs__link">
+          
+  
+    
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://admin.embedthis.com/product" target="_blank" class="md-tabs__link">
+        
+  
+  Download
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com" target="_blank" class="md-tabs__link">
+        
+  
+  EmbedThis
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com/blog" target="_blank" class="md-tabs__link">
+        
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://admin.embedthis.com" target="_blank" class="md-tabs__link">
+        
+  
+  Builder
+
+      </a>
+    </li>
+  
+
+      
+        
+
+
+
+
+  
+    <li class="md-tabs__item">
+      <a href="https://www.embedthis.com/builder/doc/" target="_blank" class="md-tabs__link">
+        
+  
+  Builder Doc
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ioto Device Agent" class="md-nav__button md-logo" aria-label="Ioto Device Agent" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Ioto Device Agent
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Device Agent
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        
+        
+          <label class="md-nav__link" for="__nav_2">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Features
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../start/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../start/uses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Cases
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Licensing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Project
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_3">
+            
+  
+  <span class="md-ellipsis">
+    Developer Guide
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/background/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto Background
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/building/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building from Source
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_5">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/initialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initialization
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/properties/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Properties
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_6">
+            
+  
+  <span class="md-ellipsis">
+    Programming Ioto
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Programming Ioto" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Programming Ioto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/fiber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fiber Coroutines
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Allocation
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_3_7">
+            
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Components" data-md-level="2">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_1" type="checkbox" id="__nav_3_7_1" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_1">
+            
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Database" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_1_2" type="checkbox" id="__nav_3_7_1_2" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_1_2">
+            
+  
+  <span class="md-ellipsis">
+    Schemas
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Schemas" data-md-level="4">
+          <label class="md-nav__title" for="__nav_3_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/schemas/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/schemas/indexes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indexes
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/schemas/params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Params
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/schemas/attributes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Attributes
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/persistency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Persistency
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replication
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Protocol
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON Parser
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL Client
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_5" type="checkbox" id="__nav_3_7_5" >
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_5">
+            
+  
+  <span class="md-ellipsis">
+    Safe Runtime
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Safe Runtime" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Safe Runtime
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/buf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Buf
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/fiber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fiber
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/hash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/socket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socket
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/thread/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime/time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_6" type="checkbox" id="__nav_3_7_6" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_6">
+            
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Web Server" data-md-level="3">
+          <label class="md-nav__title" for="__nav_3_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Web Server
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7_6_2" type="checkbox" id="__nav_3_7_6_2" checked>
+        
+        
+          <label class="md-nav__link" for="__nav_3_7_6_2">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="Configuration" data-md-level="4">
+          <label class="md-nav__title" for="__nav_3_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Properties
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Properties
+  </span>
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      documents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      headers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsbody" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.body
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitssessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.upload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listen" class="md-nav__link">
+    <span class="md-ellipsis">
+      listen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mime" class="md-nav__link">
+    <span class="md-ellipsis">
+      mime
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      redirect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      route
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessioncookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      session.cookie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessionsamesite" class="md-nav__link">
+    <span class="md-ellipsis">
+      session.sameSite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsinactivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.inactivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.parse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutssession" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsauthority" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.authority
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlscertificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.certificate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlskey" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverify" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverifyclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify.client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverifyissuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify.issuer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploaddir" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload.dir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploadremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload.remove
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listening for Connections
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Routing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dynamic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamic Content
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uploading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Upload
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS / SSL
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tlsOverview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS Overview
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standards/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/samples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Samples
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../aws/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AWS Integration
+  </span>
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" aria-label="AWS Integration" data-md-level="1">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            AWS Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/device-clouds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Device Clouds
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/provisioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Provisioning Devices
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Syncronization
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/shadow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shadow State
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/keys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS IAM Access Keys
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS APIs and SigV4
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uploading data to S3
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log File Export
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch Metrics
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Messaging
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/cloudtrail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud Auditing
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ref/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/compatibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compatibility
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/stability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stability
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        
+        
+          <label class="md-nav__link" for="__nav_5_4">
+            
+  
+  <span class="md-ellipsis">
+    APIs
+  </span>
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" aria-label="APIs" data-md-level="2">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/ioto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ioto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/crypt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crypto
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/osdep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    O/S Layer
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safe Runtime
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/api/web/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web Server
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://admin.embedthis.com/product" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EmbedThis
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com/blog" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://admin.embedthis.com" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builder
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.embedthis.com/builder/doc/" target="_blank" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builder Doc
+  </span>
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      documents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      headers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsbody" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.body
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitssessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitsupload" class="md-nav__link">
+    <span class="md-ellipsis">
+      limits.upload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listen" class="md-nav__link">
+    <span class="md-ellipsis">
+      listen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mime" class="md-nav__link">
+    <span class="md-ellipsis">
+      mime
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      redirect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      route
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessioncookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      session.cookie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessionsamesite" class="md-nav__link">
+    <span class="md-ellipsis">
+      session.sameSite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsinactivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.inactivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.parse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.request
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeoutssession" class="md-nav__link">
+    <span class="md-ellipsis">
+      timeouts.session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsauthority" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.authority
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlscertificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.certificate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlskey" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverify" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverifyclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify.client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlsverifyissuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls.verify.issuer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploaddir" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload.dir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploadremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload.remove
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="properties">Properties</h1>
+<h2 id="documents">documents</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>documents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Directory containing the static file documents to be published for context.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>documents: "directoryPath"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The documents property defines the directory containing the documents that will be served. All routes share the same documents directory. The directoryPath should not have a trailing slash.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nx">documents</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/var/www&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="headers">headers</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>headers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Define HTTP headers to add to the client response.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>headers: { "Header-Key": "Header-Value", ... }</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The <strong>headers</strong> property defines one or more HTTP headers that are added to the client response. You should only define unique headers that are not already added by action routines or by the Ioto web server core. Otherwise, your response will have duplicate headers.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="s2">&quot;Content-Security-Policy&quot;</span><span class="o">:</span><span class="w">   </span><span class="s2">&quot;default-src &#39;self&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="s2">&quot;Strict-Transport-Security&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;max-age=31536000; includeSubDomains&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="s2">&quot;CrossOrigin&quot;</span><span class="o">:</span><span class="w">               </span><span class="s2">&quot;origin=* credentials=yes headers=X-CORS-HEADER age=3000&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="index">index</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>index</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Define the default index file to serve for directory requests.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>index: "filename"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The index property specifies a document to be served when a HTTP request is made for a directory. <br><br>If a client requests a directory, but without a trailing "/" in the URI, the client will be redirected to the URI with a trailing "/". When the client then uses that URI, the directory index file will be used for the response.<br> <br>For example: if an index of "index.html" is specified and a user requests <a href="http://www.acme.com/products/">http://www.acme.com/products/</a>, then the document /products/index.html will be returned to the user.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;index.html&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="limits">limits</h2>
+<p>The Ioto web server supports configuration properties that improve security by limiting the size and scale of incoming requests. This technique is know as "sandboxing" because it creates a limited or safer area in which Ioto executes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of limit properties</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>limits: { "Limit-Property": "Limit-Value", ...}</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>All limit values may be numbers or human-readable strings with unit suffixes. The unit suffixes can be upper or lower case. The supported units are: unlimited, infinite, kb, k, mb, m, gb, g, byte and bytes. Ioto has sensible defaults for these limits if not explicitly specified.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nx">limits</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100K&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nx">connections</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10K&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="nx">sessions</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="nx">upload</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20MB&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">},</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="limitsbody">limits.body</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits.body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Sets the maximum size of the request body in POST and PUT requests.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>body: "max-size"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The body limit defines a maximum size for a POST request body data. For embedded applications, it is useful to limit the request body to the expected maximum. This ensures that rogue or malicious requests will not cause the server to allocate unwanted memory to servicing the request. The default limit is 100K.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>body: &quot;100K&quot;
+</code></pre></div></td></tr></table></div>
+        </tr>
+        <tr>
+            <td class="pivot">Notes</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td class="security">Security</td>
+            <td>
+                <p>This directive can be quite useful in certain denial-of-service attacks where the attacker sends large documents of a certain type.</p>
+            </td>
+        </tr>
+    </tbody>
+</table></p>
+<h2 id="limitsconnections">limits.connections</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits.connections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the maximum number of simultaneous client connections.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>connections: "value"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The connections limit defines the maximum number of simultaneous client connections to the server. Connections in excess of this count will be rejected. Set to "unlimited" for no limit. This property counts the number of client socket connections. A single browser may open many separate connections (typically up to 6).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nx">connections</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="limitsheader">limits.header</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits.header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Sets the maximum header size of a request.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>header: "max-size"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The header limit defines a maximum size for the request headers. For embedded applications, it is useful to limit the maximum headers size to ensure that rogue or malicious requests will not cause the agent to allocate unwanted memory for servicing the request. The default limit is 10K.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>This property can be quite useful in certain denial-of-service attacks where the attacker sends large documents of a certain type.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;32K&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="limitssessions">limits.sessions</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits.sessions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Sets the maximum number of active client sessions</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>sessions: "max-sessions"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The sessions limit property defines the maximum number of active client sessions that utilize server-side session state storage. Requests in excess of this count will be rejected. Set to "unlimited" for no limit. This property limits the number of client sessions, whereas the "connections" limit will limit the number of simultaneously connected client systems. NOTE: that many browsers can and will initiate multiple requests when requesting a page. These will share the same session state storage.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nx">sessions</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;40&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="limitsupload">limits.upload</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>limits.upload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Maximum size of an uploaded file.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>upload: "max-size"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The upload limit defines the maximum size of an uploaded file. In embedded applications, it is useful to limit the maximum file upload size to ensure that rogue or malicious requests will not cause the server to allocate unwanted space for uploads. Set to "unlimited" for no limit. If a file larger than the limit is uploaded, Ioto will reject the request and the client will receive an error. The default value is unlimited.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>This directive can be quite useful in certain denial-of-service attacks where the attacker sends requests with bogus URLs.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nx">upload</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20MB&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="listen">listen</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>listen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>IP addresses and ports on which to listing for incoming requests.&lt;</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>listen: [ "http(s)://[IP address:]portNumber", ...]</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The Listen directive specifies the IP endpoints on which Ioto will listen for incoming HTTP requests. If you specify only the port number and omit the IP address, Ioto will listen on all network interfaces including the loop-back adaptor. It will listen on both IPv4 and IPv6 if only a portNumber is specified. &gt;To listen on IPv6 endpoints, enclose the IP address in square brackets. For example: Listen [2001:05c0:9168:0000:0000:0000:0000:0001]. To listen on IPv4 endpoints, supply an IPv4 IP address. You may use 0.0.0.0 to listen on all IPv4 interfaces. To listen for TLS requests, use a "https://" prefix.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nx">listen</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="s2">&quot;http://:80&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="s2">&quot;https://:443&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="p">]</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="mime">mime</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>mime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Mime map to map document extensions to mime types.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>mime: { "ext": "mime-type", ...}</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The mime property defines additional mime types to be added to the Ioto mime type table. Mime type properties are indexed by the document file extension with the value of each key set to the corresponding mime type.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nx">mime</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="s2">&quot;.html&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="s2">&quot;.ico&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image/vnd.microsoft.icon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="name">name</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Define the public hostname by which the server is known</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>name: "hostname.com"</code></td>
+</tr>
+<tr>
+<td>Notes:</td>
+<td>The name property specifies the preferred, public, fully qualified hostname for the server. This address will be used when constructing URLs and redirections. The given hostname should be a fully qualified domain name with port number if using a port other than the default port. If a name is not defined, a value will be determined from the listening endpoint that accepted the connection.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;www.acme.com&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="redirect">redirect</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>redirect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Redirect requests to a new target.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>redirect: [ { status: code, from: "path", to: "path" }, ... ]</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The redirect property maps requests from one URI to a new URL. <br><br>The status argument may be either 301 for a permanent redirect or 302 for a temporary redirect. The default is 302.<br><br>The <strong>from</strong> property defines the leading URL portion that must match for the redirect. If the <strong>from</strong> property is omitted, it will match all URLs.<br><br>The <strong>to</strong> URL may be local to the system, in which case it will begin with a "/" character. Or it may be on another system, in which case it will begin with "http://" or "https://". In both cases, the user will receive a HTTP redirection response informing them of the new location of the document. If the <strong>to</strong> URL only consists of the scheme (https://), then the <strong>from</strong> URL will be used with the target scheme. This is useful to redirect all non-secure request to the secure https listening endpoint that supports TLS.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nx">redirect</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="mf">302</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="mf">301</span><span class="p">,</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/old&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/new.html&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="p">],</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="route">route</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Define a configuration to apply to a set of URLs.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>routes: [ match: "url-prefix", can: 'ability' ]</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The routes property specifies an ordered set of routes that defines the required authorization to be accepted.<br><br>A route entry has a <b>match</b> property that defines the URL prefix that must match for the route to be used.<br><br>The optional "<b>can</b>" property defines a set of "abilities" the user must possess for the route to be used. If the "<b>can</b>" property is absent, all users will match. If specified, the user must be authenticated first to determine their abilities.<br><br>If the route matches, but the user fails to be authorized, the "<b>redirect</b>" property will be used to redirect the user to the given URL.<br><br>Ioto tests routes in order and the first matching route is used. If no routes match, the client request is rejected with a 401 status code.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nx">routes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">match</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/public/&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">match</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/auth/&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">match</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/members/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">can</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;view&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">match</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/admin/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">can</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;edit&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">can</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;edit&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/auth/login&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="p">],</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+            </code></td>
+        </tr>
+        <tr>
+            <td class="pivot">Notes</td>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table></p>
+<h2 id="sessions">sessions</h2>
+<p>The Ioto web server supports server-side sessions that are indexed by a session cookie. Ioto manages the creation of the session cookie and the management of sessions. APIs to get and set values in session state are provided.</p>
+<p>The default session cookie name is <strong>-web-session-</strong>. You can modify this when building by defining WEB_SESSION_COOKIE to be the cookie name of your choice.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of session properties.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>sessions: { "Sessions-Property": "Session-Value", ...}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nx">sessions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">    </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;-web-cookie-&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">    </span><span class="nx">enable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lax&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="p">},</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="sessioncookie">session.cookie</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>session.cookie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Controls whether to create session state for a request.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>enable: true|false</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nx">enable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="sessionsamesite">session.sameSite</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>session.sameSite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Sets the sameSite property in the cookie.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>sameSite: "Lax|None|Strict"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The sameSite property defines the Set-Cookie HTTP header SameSite field. It may be set to "Lax" (the default), "None" or Strict.<br><br>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">MDN Set-Cookie SameSite</a> for more information.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>This property is used to effectively defend against CSRF attacks.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lax&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="timeouts">timeouts</h2>
+<p>The Ioto web server supports timeout properties that improve security by limiting the duration of requests.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>timeouts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of timeout properties.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>timeouts: { "Timeout-Property": "Timeout-Value", ...}</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>All timeout values are strings, not numbers.<br><br>The string values may take human-readable suffixes which indicate the units for the value. The suffixes can be upper or lower case. The supported units are: infinite, never, sec, secs, seconds, min, mins, minute, minutes, hr, hrs, hour, hours, day, days, week, weeks, month, months, year, years.<br><br>Ioto has sensible defaults for these timeouts if not explicitly specified.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nx">timeouts</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">    </span><span class="nx">parse</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10 secs&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">    </span><span class="nx">inactivity</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;300 secs&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">    </span><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10 mins&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">    </span><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;30 mins&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">    </span><span class="nx">tls</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1 day&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div></p>
+<h2 id="timeoutsinactivity">timeouts.inactivity</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>timeouts.inactivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the maximum duration of no I/O activity before the request will be terminated.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>inactivity: "duration"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The inactivity timeout will be triggered if there is no read or write activity on the network connection to the client over the specified timeout period.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="nx">inactivity</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;30secs&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="timeoutsparse">timeouts.parse</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>timeouts.parse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the maximum duration for parsing the request HTTP headers</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>parse: "duration"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The parse timeout will be triggered if Ioto cannot read and parse the HTTP headers over the specified timeout period.<br><br>It is a security attack vector to open a connection to a web server and then be very slow, or stall writing the HTTP headers. This consumes a network connection and can lead to a denial of service. Setting the parse timeout to be short will limit this attack.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nx">parse</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;15secs&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="timeoutsrequest">timeouts.request</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>timeouts.request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the maximum duration for a request.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>request: "duration"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The request timeout will be triggered if the request cannot be completed inside the specified timeout period.<br><br>It is good practice to set a request timeout to the maximum duration you expect the longest request to take.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2mins&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="timeoutssession">timeouts.session</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>timeouts.session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the maximum duration of session inactivity for preserving session state.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>session: "duration"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Session state will be preserved for up to the session timeout. When a client accesses or updates the session state, the timeout is restarted.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1hr&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tls">tls</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of TLS properties.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>tls: { "Tls-Property": "Tls-Value", ... }</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>TLS properties apply to web server https connections. They do not apply to Ioto MQTT or Ioto client connections.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span>
+<span class="normal"><a href="#__codelineno-22-6">6</a></span>
+<span class="normal"><a href="#__codelineno-22-7">7</a></span>
+<span class="normal"><a href="#__codelineno-22-8">8</a></span>
+<span class="normal"><a href="#__codelineno-22-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nx">tls</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="w">    </span><span class="nx">authority</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ca.crt&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="w">    </span><span class="nx">certificate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;server.crt&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;server.key&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="w">    </span><span class="nx">verify</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="w">        </span><span class="nx">client</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="w">        </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlsauthority">tls.authority</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.authority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the location of the certificate file for client authentication.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>authority: "path"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The <b>authority</b> property defines the file containing the certificates to use when authenticating client certificates. This property is only necessary if you wish to verify client certificates. If so, you must also define the "verify.client" to be true.<br><br>The certificate file contains the concatenated certificates to use in preference order. The path may be an absolute path or it may be relative to the Home directory.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="nx">authority</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/var/ioto/ca.crt&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlscertificate">tls.certificate</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.certificate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the location of the X.509 file containing the server certificate</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>certificate: "path"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The SSLCertificateFile directive defines the file containing the PEM encoded X.509 certificate for the server. The file may also contain the private key for the server in which case you do not need to use the <b>key</b> property.</td>
+</tr>
+</tbody>
+</table>
+<p>The path may be an absolute path or it may be relative to the Ioto home directory.|</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="nx">certificate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;server.crt&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlskey">tls.key</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the location of the server's private key.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>key: "path/to/key"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The key property defines the file containing the PEM encoded private key file for the server. This property is not required if the server's private key is combined with the certificate file. The private key should not be encrypted.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>There is a dilemma here. If you use an encrypted private key, the server will pause until you enter the pass-phrase which makes headless operation impossible. If you do not encrypt the private key, your private key is more vulnerable should the server be compromised.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;server.key.pem&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlsverify">tls.verify</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of TLS verification properties</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>verify: { "client": "value", "issuer": "value" }</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Control the type of certificate verification.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span>
+<span class="normal"><a href="#__codelineno-26-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="nx">verify</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="w">    </span><span class="nx">client</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="w">    </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlsverifyclient">tls.verify.client</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.verify.client</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Control the type of client certificate verification.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>client: true|false</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>This property controls whether the client must provide a client certificate for the server to verify the identity of the client. If disabled, no certificate is required. If one is supplied, it will be ignored. The certificate and the certificate's issuer will be verified. Use the "verify.issuer" directive to turn off verification of the issuer if you need to use a self-signed test certificate.<br><br>If the property is enabled, the client must provide a valid certificate. The default is disabled.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="nx">verify</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="w">    </span><span class="nx">client</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tlsverifyissuer">tls.verify.issuer</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>tls.verify.issuer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines whether the issuer of the client certificate is verified.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>issuer: true|false</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>This property controls whether the issuer of the client certificate will be verified. If set to <b>off</b>, the certificate issuer will not be verified. This is useful to accept self-signed test certificates.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="nx">verify</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="w">    </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="upload">upload</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>upload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Collection of Upload properties.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>upload: { "Upload-Property": "Upload-Value", ... }</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The Upload properties control requests that use multi-part mime file upload. They control where the files are placed and how long the files are retained.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="nx">upload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="w">    </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="w">    </span><span class="nx">remove</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="uploaddir">upload.dir</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>upload.dir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines the directory to receive uploaded files.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>dir: "path"</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The directory to hold uploaded files should be outside the site "documents" directory.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;./tmp/uploads&quot;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="uploadremove">upload.remove</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>upload.remove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>Defines whether the uploaded files should be preserved after the request completes.</td>
+</tr>
+<tr>
+<td>Synopsis</td>
+<td><code>remove: true | false</code></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>The <b>remove</b> property defines whether the uploaded file is removed when the request completes. By default, an action routine that receives the upload file request should process the file before completing. Then Ioto will observe this property to determine if the file should be removed.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>It is a denial-of-service risk to keep uploaded files in the upload directory after the receiving action routine completes. If the files are not immediately removed, attackers can upload more and more data and exhaust the capacity of the server.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nx">remove</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+
+
+
+  
+
+
+
+              
+            </article>
+            
+<script>var input,hash=location.hash.slice(1);hash.startsWith("__tabbed_")&&((input=document.getElementById(hash)).checked=!0)</script>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../listening/" class="md-footer__link md-footer__link--next" aria-label="Next: Listening for Connections" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Listening for Connections
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/embedthis/ioto" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/embedthat" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/embedthis" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/company/embedthis" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../assets/javascripts/bundle.15234abc.min.js"></script>
+      
+    
+
+  </body>
+</html>

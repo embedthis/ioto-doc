@@ -1,0 +1,8 @@
+# Migrating from GoAhead or Appweb
+
+If you are migrating from GoAhead or Appweb, you should regard Ioto as a next generation web server. You can migrate code from GoAhead or Appweb, however, you should anticipate significant refactoring work in the transition, especially with regard to memory allocations if migrating from Appweb.</p>
+
+<a id="changes"></a>
+<h2>Migrating from GoAhead</h2>
+
+<h2>Migrating from Appweb</h2>

@@ -1,0 +1,156 @@
+dev_addr: 127.0.0.1:9091
+site_name: Ioto Device Agent
+
+nav:
+ - Ioto Device Agent: index.md
+ - Getting Started:
+   - overview.md
+   - Ioto Features: features.md
+   - Installation: start/installation.md
+   - Use Cases: start/uses.md
+   - Licensing: licensing.md
+   - Ioto Project: user/project.md
+ - Developer Guide:
+   - Ioto Background: user/background.md
+   - Building from Source: user/building.md
+   - Embedding Ioto: dev/embedding.md
+   - Running Ioto: user/running.md
+   - Configuration:
+     - Overview: user/configuration.md
+     - Initialization: user/initialization.md
+     - Configuration Properties: user/properties.md
+   - Programming Ioto:
+     - Fiber Coroutines: dev/fiber.md
+     - Memory Allocation: dev/memory.md
+     - Events: dev/events.md
+   - Components:
+     - Database:
+       - Overview: database/overview.md
+       - Schemas:
+         - Overview: database/schemas/overview.md
+         - Indexes: database/schemas/indexes.md
+         - Params: database/schemas/params.md
+         - Model Attributes: database/schemas/attributes.md
+       - Persistency: database/persistency.md
+       - Replication: database/replication.md
+     - MQTT Protocol: dev/mqtt.md
+     - JSON Parser: dev/json.md
+     - URL Client: dev/url.md
+     - Safe Runtime:
+       - Overview: runtime/overview.md
+       - Buf: runtime/buf.md
+       - Event: runtime/event.md
+       - Fiber: dev/fiber.md
+       - File: runtime/file.md
+       - Hash: runtime/hash.md
+       - List: runtime/list.md
+       - Log: runtime/log.md
+       - Memory: dev/memory.md
+       - Socket: runtime/socket.md
+       - String: runtime/string.md
+       - Thread: runtime/thread.md
+       - Time: runtime/time.md
+     - Web Server:
+       - Overview: web/overview.md
+       - Configuration:
+         - Overview: web/configuration.md
+         - Properties: web/properties.md
+       - Listening for Connections: web/listening.md
+       - Request Routing: web/routing.md
+       - Authentication: web/authentication.md
+       - Dynamic Content: web/dynamic.md
+       - File Upload: web/uploading.md
+       - TLS / SSL: web/tls.md
+       - TLS Overview: web/tlsOverview.md
+       - Security: web/security.md
+       - Standards: standards/http.md
+   - Samples: dev/samples.md
+ - AWS Integration:
+   - Overview: aws/index.md
+   - Device Clouds: aws/device-clouds.md
+   - Provisioning Devices: aws/provisioning.md
+   - Database Syncronization: aws/sync.md
+   - Shadow State: aws/shadow.md
+   - AWS IAM Access Keys: aws/keys.md
+   - AWS APIs and SigV4: aws/apis.md
+   - Uploading data to S3: aws/s3.md
+   - Log File Export: aws/logs.md
+   - CloudWatch Metrics: aws/metrics.md
+   - MQTT Messaging: dev/mqtt.md
+   - Cloud Auditing: aws/cloudtrail.md
+   # - OTA Upgrading: aws/ota.md
+ - API Reference:
+   - 'ref/index.md'
+   - Compatibility: ref/compatibility.md
+   - Stability: ref/stability.md
+   - APIs:
+     - Ioto: ref/api/ioto.md
+     - Crypto: ref/api/crypt.md
+     - Database: ref/api/db.md
+     - JSON: ref/api/json.md
+     - MQTT: ref/api/mqtt.md
+     - O/S Layer: ref/api/osdep.md
+     - Safe Runtime: ref/api/r.md
+     - HTTP Client: ref/api/url.md
+     - Web Server: ref/api/web.md
+ - Download: https://admin.embedthis.com/product" target="_blank
+ - EmbedThis: https://www.embedthis.com" target="_blank
+ - Blog: https://www.embedthis.com/blog" target="_blank
+ - Builder: https://admin.embedthis.com" target="_blank
+ - Builder Doc: https://www.embedthis.com/builder/doc/" target="_blank
+
+theme:
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.indexes
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.share
+    - search.suggest
+    - toc.follow
+    - announce.dismiss
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: images/favicon.ico
+
+extra_css:
+  - css/all.css
+extra:
+  analytics:
+    provider: custom
+    # property: G-2ZZBCEQJGK
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/embedthis/ioto
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/embedthat
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/embedthis
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/embedthis
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.magiclink
+  - attr_list

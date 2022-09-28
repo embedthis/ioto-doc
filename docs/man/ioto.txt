@@ -1,0 +1,98 @@
+IOTO(1)                           User Commands                          IOTO(1)
+
+
+
+NAME
+       ioto- Embedded Device Agent
+
+SYNOPSIS
+       ioto [options]
+       ioto [options]
+
+       ioto
+           --background
+           --debug
+           --home directory
+           --profile profile
+           --timeouts
+           --trace file[:type:source]
+           --verbose
+           --version
+
+DESCRIPTION
+       Ioto is a compact device agent that includes an MQTT client, HTTP web
+       server, HTTP client and integration with AWS IoT. It can run as a stand-
+       alone as a device agent or the Ioto library can be embedded in
+       applications.
+
+       The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user
+       authentication, sessions, chunked transfers, file upload, and security
+       limits.
+
+       Ioto normally reads a set of JSON configuration files. It reads the
+       config.json file for general configuration, the web.json for web server
+       configuration, auth.json for authentication configuration, and state.json
+       for persisted device state.
+
+       Ioto can trace activities to a file that defaults to 'stdout'. This can
+       be modified via the --trace command line option.
+
+       The --trace option specifies a destination file for trace messages. This
+       will override the trace property in the Ioto config.json file. The trace
+       argument syntax is fileName[:types:sources]. The types are a comma
+       separated list of message types. Valid types include: info, debug, error,
+       and trace. Sources are the code module names originating the trace
+       messages. You can use "all" for types and sources to match all
+       types/sources. You can also use "!type" and "!source" to negate a type or
+       source.
+
+       Ioto responds to the SIGUSR2 signal and increases the trace level.
+
+OPTIONS
+       --background
+              Run Ioto in the background and detach from the console.
+
+       --debug
+              Enable debug tracing. The -T option is an alias for --tracing.
+
+       --home directory
+              Change to the specified directory before running Ioto.
+
+       --trace file[:types:sources]
+              Name the Ioto trace file. The types are a comma separated list of
+              message types. Valid types include: info, debug, error, and trace.
+              Sources are the code module names originating the trace messages.
+              You can use "all" for types and sources to match all
+              types/sources. You can also use "!type" and "!source" to negate a
+              type or source.
+
+       --profile profile
+              Select the operational profile. Defaults to "prod".
+
+       --timeouts
+              Run Ioto in debug mode and disable all timeouts. This disables
+              request and session timeouts.
+
+       --verbose
+              Run with more verbose tracing.
+
+       --version
+              Output the product version number.
+
+FILES
+       /etc/ioto
+       /var/www/ioto
+       /usr/local/lib/ioto
+
+REPORTING BUGS
+       Report bugs to dev@embedthis.com.
+
+COPYRIGHT
+       Copyright (c) Embedthis Software.
+
+SEE ALSO
+       pass
+
+
+
+ioto                                June 2022                            IOTO(1)

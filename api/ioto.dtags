@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="group">
+    <name>Aws</name>
+    <title>Aws</title>
+    <filename>group___aws.html</filename>
+    <member kind="function">
+      <type>int</type>
+      <name>aws</name>
+      <anchorfile>group___aws.html</anchorfile>
+      <anchor>ga0c203ace45b6297fb155586c66ca37c5</anchor>
+      <arglist>(Url *up, cchar *region, cchar *service, cchar *target, cchar *body, ssize bodyLen, cchar *headers,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>awsPutFileToS3</name>
+      <anchorfile>group___aws.html</anchorfile>
+      <anchor>gaa8d577443da8468e707715e6c06f07a3</anchor>
+      <arglist>(cchar *region, cchar *bucket, cchar *key, cchar *filename)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>awsPutToS3</name>
+      <anchorfile>group___aws.html</anchorfile>
+      <anchor>ga51aed8ebba4596746ea25a70f3800405</anchor>
+      <arglist>(cchar *region, cchar *bucket, cchar *key, cchar *data, ssize dataLen)</arglist>
+    </member>
+    <member kind="function">
+      <type>char *</type>
+      <name>awsSign</name>
+      <anchorfile>group___aws.html</anchorfile>
+      <anchor>ga667cc42975b96caa833c234a2cce3497</anchor>
+      <arglist>(cchar *region, cchar *service, cchar *target, cchar *method, cchar *path, cchar *query, cchar *body, ssize bodyLen, cchar *headers,...)</arglist>
+    </member>
+  </compound>
+  <compound kind="group">
+    <name>Ioto</name>
+    <title>Ioto</title>
+    <filename>group___ioto.html</filename>
+    <member kind="function">
+      <type>int</type>
+      <name>ioConfig</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga1becc07b70ae4d76573efa725f1990cb</anchor>
+      <arglist>(Json *config)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>ioInit</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga219114ddbf607f45c56bb8ce755301d2</anchor>
+      <arglist>(cchar *profile)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ioStart</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga3e8dd69c4d0bccc318ad46ad671abf47</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>ioStop</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga5eb0815de56438e5555b7a6342a0c8c2</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>ioTerm</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>gafba29dc58f2f90bdb09e9b852a73a8f8</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>ssize</type>
+      <name>webWriteItem</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga19f439c548c4024011f0347f44907585</anchor>
+      <arglist>(Web *web, const DbItem *item)</arglist>
+    </member>
+    <member kind="function">
+      <type>ssize</type>
+      <name>webWriteItems</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga767ef41e2df6ffd2786d0e374158dbbb</anchor>
+      <arglist>(Web *web, const DbGrid *items)</arglist>
+    </member>
+    <member kind="variable">
+      <type>PUBLIC_DATA Ioto *</type>
+      <name>ioto</name>
+      <anchorfile>group___ioto.html</anchorfile>
+      <anchor>ga613b82517c1bd585c1c2d34cecc76ddb</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+</tagfile>

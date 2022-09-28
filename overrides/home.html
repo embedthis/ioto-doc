@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  <style>
+    .md-header {
+      position: initial;
+    }
+    .md-main__inner {
+      margin: 0;
+    }
+    .md-main {
+      background-color: var(--md-footer-bg-color);
+    }
+    .md-content {
+      display: none;
+    }
+    @media screen and (min-width: 60em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+    </style>
+    <div class="hero">
+        <picture>
+            <source srcset="images/mars.avif" type="image/avif">
+            <source srcset="images/mars.jpg" type="image/jpg">
+            <img src="images/mars.jpg" id="servers" alt="Cloud Logs">
+        </picture>
+    </div>
+
+    <div class="hero-text">
+        <h1>EmbedThis Ioto</h1>
+        <h2>Device Agent</h2>
+
+        <div class="hero-why dark">
+            <h3>Remote Device Management from Anywhere</h3>
+            <p>Cloud-based or device-based Management.</p>
+            <a class="hero-button" href="overview/">Learn More</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
