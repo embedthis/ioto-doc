@@ -4,15 +4,15 @@ Embedthis developers use a variety of tools and resources to better manage the I
 
 ## GitHub Repository
 
-The [Ioto GitHub repository](https://github.com/embedthis/ioto) is used for Ioto bug issue tracking and support discussions. The repository does not host the source code which is distributed from the [Builder Site](https://admin.embedthis.com).
+The [Ioto GitHub repository](https://github.com/embedthis/ioto-doc) is used for Ioto bug issue tracking and support discussions. The repository does not host the source code which is distributed from the [Builder Site](https://admin.embedthis.com).
 
 ## Security Alerts
 
-You can subscribe to be notified of important security updates by subscribing to the [Ioto Security Alerts](https://github.com/embedthis/ioto/issues/1) GitHub Issue. Login to GitHub and subscribe under Notifications on the right hand side.</p>
+You can subscribe to be notified of important security updates by subscribing to the [Ioto Security Alerts](https://github.com/embedthis/ioto-doc/issues/1) GitHub Issue. Login to GitHub and subscribe under Notifications on the right hand side.</p>
 
 ## Bug Issue List
 
-The Ioto open issue and bug list is stored in a [GitHub Issues](https://github.com/embedthis/ioto/issues) site. Use the issue list to report bugs, issues and questions. Make sure you do the following:
+The Ioto open issue and bug list is stored in a [GitHub Issues](https://github.com/embedthis/ioto-doc/issues) site. Use the issue list to report bugs, issues and questions. Make sure you do the following:
 
 * Fully describe any issue &mdash; don't be too brief
 * The exact sequence of operations to provoke the issue

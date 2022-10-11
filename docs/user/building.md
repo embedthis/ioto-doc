@@ -222,4 +222,4 @@ To set the path to your OpenSSL source directory, click on "ioto-macosx-default"
 
 A GitHub repository is used to track issues and for discussions.
 
-Go to the [GitHub Issues](https://github.com/embedthis/ioto) to track bugs, security issues or participate in general discussions regarding Ioto.
+Go to the [GitHub Issues](https://github.com/embedthis/ioto-doc) to track bugs, security issues or participate in general discussions regarding Ioto.

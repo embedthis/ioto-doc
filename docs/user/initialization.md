@@ -96,7 +96,7 @@ Registration is a one-time step that happens only when the device is first power
 
 When the device boots during system test, the Ioto agent will connect to the Embedthis Builder service to register. The agent will send the contents of the device.json over an encrypted TLS connection to the Embedthis Builder service.
 
-The **device.json** file contains the UCI device identifier and the product registration token. You can get the product device registration token from the Builder Product/Modify panel.
+The **device.json** file contains the UCI device identifier and the product registration token. You can get the ProductID registration token from the Builder Token List.
 
 Once Ioto registers the device, the Ioto agent awaits for a user to claim the device.
 

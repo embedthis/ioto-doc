@@ -70,7 +70,9 @@ The library supports the JSON and JSON/5 formats. JSON/5 is an extension of JSON
 <table class="apiIndex" title="Defines">
 <tr class="apiDef">
 <td>#define</td><td><a href="#json_8h_1af4230313ed0c1f56128228c680d8779f" class="nameRef">ITERATE_JSON</a>&nbsp;&nbsp;&nbsp;    nid = (int) ((parent ? parent : json-&gt;nodes) - json-&gt;nodes + 1); \
-    (json-&gt;count &gt; 0) &amp;&amp; (nid &lt; (parent ? parent : json-&gt;nodes)-&gt;last) &amp;&amp; ((child = &amp;json-&gt;nodes[nid]) != 0); \
+        (json-&gt;count &gt; 0) &amp;&amp; json-&gt;nodes &amp;&amp; \
+        (nid &lt; (parent ? parent : json-&gt;nodes)-&gt;last) &amp;&amp; \
+        ((child = &amp;json-&gt;nodes[nid]) != 0); \
     nid = child-&gt;last</td>
 </tr>
 <tr class="apiBrief"><td>&nbsp;</td><td>This iterates over the children under the &quot;parent&quot; id.</td></tr>
@@ -144,9 +146,6 @@ The library supports the JSON and JSON/5 formats. JSON/5 is an extension of JSON
     </dd></dl>
     <dl><dt>Fields:</dt><dd>
     <table class="parameters" title="Parameters">
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/json/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>bits</td><td>
-Use defined bits.
-</td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/json/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>count</td><td>
 Number of allocated nodes (count &lt;= size).
 </td>
@@ -158,6 +157,9 @@ Parsing error details.
 </td>
     <tr><td class="param">REvent</td><td><td>event</td><td>
 Saving event.
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/json/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>flags</td><td>
+Use defined bits.
 </td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/json/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>lineNumber</td><td>
 Current parse line number.

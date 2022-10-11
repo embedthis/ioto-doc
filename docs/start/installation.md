@@ -19,7 +19,9 @@ After installing Ioto on your system, the Ioto Agent will be automatically start
 ## Building Ioto
 -->
 
-Ioto releases are available as source code distributions from the [Builder Site](https://admin.embedthis.com). Create an account and login, then define your product and select **Ioto** as the licensed software. Then click the download link and select the Ioto source code package.
+Ioto releases are available as source code distributions from the [Builder Site](https://admin.embedthis.com).
+
+To download Ioto, first create an account and login. Then define your product and select **Ioto** as the licensed software. Then click the download link and select the Ioto source code package.
 
 [Download Source Package](https://admin.embedthis.com){ .md-button .md-button--outlined }
 
@@ -39,4 +41,4 @@ For more details, read [Building from Source](../user/building.md) in the Develo
 
 A GitHub repository is used to report bugs, track issues and for general discussion.
 
-Go to the [GitHub Issues](https://github.com/embedthis/ioto) to track bugs, security issues or participate in general discussions regarding Ioto.
+Go to the [GitHub Issues](https://github.com/embedthis/ioto-doc) to track bugs, security issues or participate in general discussions regarding Ioto.

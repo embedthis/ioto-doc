@@ -3238,7 +3238,7 @@
 <p>Before a device can be managed, it must be registered and then be "claimed" by a user once purchased.</p>
 <p>Registration is a one-time step that happens only when the device is first powered on.</p>
 <p>When the device boots during system test, the Ioto agent will connect to the Embedthis Builder service to register. The agent will send the contents of the device.json over an encrypted TLS connection to the Embedthis Builder service.</p>
-<p>The <strong>device.json</strong> file contains the UCI device identifier and the product registration token. You can get the product device registration token from the Builder Product/Modify panel.</p>
+<p>The <strong>device.json</strong> file contains the UCI device identifier and the product registration token. You can get the ProductID registration token from the Builder Token List.</p>
 <p>Once Ioto registers the device, the Ioto agent awaits for a user to claim the device.</p>
 <h2 id="device-claiming">Device Claiming</h2>
 <p>When a user purchases or installs a device with the Ioto agent, they can "claim" the device to manage from the cloud. While waiting, cloud services are pending, but other Ioto services can run, including the embedded web server for local management (if enabled).</p>

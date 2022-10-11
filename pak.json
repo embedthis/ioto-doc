@@ -15,11 +15,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/embedthis/ioto.git"
+        "url": "git://github.com/embedthis/ioto-doc.git"
     },
     "bugs": {
         "email": "dev@embedthis.com",
-        "url": "http://github.com/embedthis/ioto/issues"
+        "url": "http://github.com/embedthis/ioto-doc/issues"
     },
     "license": "Commercial",
     "dependencies": {

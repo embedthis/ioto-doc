@@ -271,7 +271,7 @@ Notes:
 
 Ioto documents discovered security errors in its GitHub issue database at:
 
-    https://github.com/embedthis/ioto/issues?state=open
+    https://github.com/embedthis/ioto-doc/issues?state=open
 
 Specific issue reports are created for all confirmed or erroneous security reports that receive a CVE classification. You can search for specific CVE numbers or see all via:
 
