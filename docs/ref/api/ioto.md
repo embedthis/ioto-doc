@@ -251,6 +251,9 @@ Most of the Ioto API is provided by the following component libraries:
     <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
     <dl><dt>Fields:</dt><dd>
     <table class="parameters" title="Parameters">
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>accountId</td><td>
+Owning manager accountId.
+</td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>api</td><td>
 Device cloud API endpoint.
 </td>
@@ -278,9 +281,6 @@ AWS cred token.
     <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>builder</td><td>
 Builder API endpoint.
 </td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>claimId</td><td>
-Claim ID.
-</td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>cloudService</td><td>
 Embedded database service.
 </td>
@@ -290,17 +290,17 @@ Configuration.
     <tr><td class="param">Db *</td><td><td>db</td><td>
 Structured state database.
 </td>
-    <tr><td class="param">RBuf *</td><td><td>dbChanges</td><td>
-Buffer of database change records.
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>endpoint</td><td>
+Device cloud API endpoint.
 </td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>deviceId</td><td>
-Device ID.
+    <tr><td class="param">int</td><td><td>errors</td><td>
+Enforce strict signature compliance.
 </td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga06650984137cfde185bac06dd2a4f355" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">Ticks</a></td><td><td>firstSyncChange</td><td>
-When the first database state change happend.
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>id</td><td>
+Claim ID.
 </td>
     <tr><td class="param">char *</td><td><td>instance</td><td>
-Enforce strict signature compliance. 
+Network error count. 
 EC2 instance.
 </td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>keyService</td><td>
@@ -364,26 +364,17 @@ Directory for state files.
     <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>strictSignatures</td><td>
 Device has been registered.
 </td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga06650984137cfde185bac06dd2a4f355" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">Ticks</a></td><td><td>syncDelay</td><td>
-Delay to flush database changes to the cloud.
-</td>
-    <tr><td class="param">REvent</td><td><td>syncEvent</td><td>
-Schedule synchronization event.
-</td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga7d08ccc1e981eb4d5a238641ac4ccfc1" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">ssize</a></td><td><td>syncLimit</td><td>
-Limit of buffered database changes.
-</td>
     <tr><td class="param"><a class="ref" href="#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">bool</a></td><td><td>syncService</td><td>
 AWS IoT core shadows.
-</td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>syncToken</td><td>
-Authentication token when sending database changes to the cloud.
 </td>
     <tr><td class="param">Json *</td><td><td>template</td><td>
 Properties for templates.
 </td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>thingName</td><td>
-AWS IoT thing name.
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>thing</td><td>
+Device Thing Name (same as claim ID).
+</td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/ioto/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>version</td><td>
+Your software version number (not Ioto version).
 </td>
     <tr><td class="param">WebHost *</td><td><td>webHost</td><td>
 Web server host.

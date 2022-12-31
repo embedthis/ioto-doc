@@ -26,12 +26,12 @@ To get a remote document, use the *urlGet* API:
 char *document = urlGet("https://example.com/index.html", NULL);
 
 printf("Document %s\n", document);
-rfree(document);
+rFree(document);
 ```
 
 This call will block the current fiber while other fibers continue to run. When the document has been retrieved, the call will resume and the document will be returned. If the request fails and a non-200 HTTP status is returned, the call returns NULL.
 
-When complete, you must free the returned string using *rfree*.
+When complete, you must free the returned string using *rFree*.
 
 To issue a post request, use *urlPost* API
 

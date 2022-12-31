@@ -7,21 +7,30 @@ ioto\- Embedded Device Agent
 .B ioto [options]
 .P
 .B ioto
+    \fB--account Token\fR
     \fB--background\fR
+    \fB--cloud Token\fR
     \fB--debug\fR
+    \fB--exit event|minutes\fR
     \fB--home directory\fR
+    \fB--id Token\fR
+    \fB--nolocal\fR
+    \fB--nosave\fR
+    \fB--product Token\fR
     \fB--profile profile\fR
+    \fB--reset\fR
+    \fB--test Suite\fR
     \fB--timeouts\fR
-    \fB--trace file[:type:source]\fR
+    \fB--trace file[:type:from]\fR
     \fB--verbose\fR
     \fB--version\fR
+
 .SH DESCRIPTION
-Ioto is a compact device agent that includes an MQTT client, HTTP web server, HTTP client and integration with AWS IoT. It can run as a stand-alone as a device agent or
-the Ioto library can be embedded in applications.
+Ioto is a compact device agent that includes an MQTT client, HTTP web server, HTTP client, embedded database, JSON parser and integration with AWS IoT. It can run as a stand-alone as a device agent or the Ioto library can be embedded in applications.
 .P
 The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user authentication, sessions, chunked transfers, file upload, and security limits.
 .P
-Ioto normally reads a set of JSON configuration files. It reads the \fBconfig.json5\fR file for general configuration, the \fBweb.json5\fR for web server configuration, \fBauth.json5\fR for authentication configuration, and \fBshadow.json5\fR for persisted device shadow state.
+Ioto normally reads a set of JSON configuration files. It reads the \fBconfig.json5\fR file for general configuration, the \fBweb.json5\fR for web server configuration, and \fBshadow.json5\fR for persisted device shadow state.
 .P
 Ioto can trace activities to a file that defaults to 'stdout'. This can be modified via the --trace command line option.
 .P
@@ -30,20 +39,40 @@ The --trace option specifies a destination file for trace messages. This will ov
 Ioto responds to the SIGUSR2 signal and increases the trace level.
 .SH OPTIONS
 .TP
+\fB\--account ID\fR
+Override the account property in the device.json5 configuration file when using pre-claimed device provisioning. The account property should be set to the user's device manager account ID obtained from the Account/Settings page in the manager site.
 \fB\--background\fR
 Run Ioto in the background and detach from the console.
+.TP
+\fB\--cloud Token\fR
+Override the cloudToken property in the device.json5 configuration file when using pre-claimed device provisioning. The cloudToken property should be set to the Builder cloud claim token.
 .TP
 \fB\--debug\fR
 Enable debug tracing. The \fB-T\fR option is an alias for --tracing.
 .TP
+\fB\--exit event|minutes\fR
+Exit Ioto when the given event is triggered or when the specified number of minutes have elapsed. Useful when performing limited tests.
+.TP
 \fB\--home directory\fR
 Change to the specified directory before running Ioto.
+.TP
+\fB\--id UCI\fR
+Override the id property in the device.json5 configuration file. The id property should be set to unique device claim ID for the device.
 .TP
 \fB\--trace file[:types:sources]\fR
 Name the Ioto trace file. The types are a comma separated list of message types. Valid types include: info, debug, error, and trace. Sources are the code module names originating the trace messages. You can use "all" for types and sources to match all types/sources. You can also use "!type" and "!source" to negate a type or source.
 .TP
+\fB\--product Token\fR
+Override the productToken property in the device.json5 configuration file when using pre-claimed device provisioning. The productToken property should be set to the Builder product token.
+.TP
 \fB\--profile profile\fR
 Select the operational profile. Defaults to "prod".
+.TP
+\fB\--reset\fR
+Reset Ioto state to factory defaults. This erases database state under the ./state directory.
+.TP
+\fB\--test suite\fR
+Run the select test described in the config/test.json5 test configuration file.
 .TP
 \fB\--timeouts\fR
 Run Ioto in debug mode and disable all timeouts. This disables request and session timeouts.
@@ -69,5 +98,3 @@ Report bugs to dev@embedthis.com.
 .SH COPYRIGHT
 Copyright (c) Embedthis Software.
 .br
-.SH "SEE ALSO"
-pass

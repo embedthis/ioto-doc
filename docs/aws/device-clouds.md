@@ -9,24 +9,24 @@ Device Clouds are created in your AWS account and region to manage the day-to-da
 
 A device cloud stores device data and manages communications with your devices. By aggregating critical device data in one place, you can more easily manage your devices and extract important data analytics and intelligence from your device pool.
 
-When creating device clouds, the builder will create the necessary resources including a DynamoDB device database and service Lambda function in your AWS account.
+When creating device clouds, the Builder will create the necessary AWS resources including a DynamoDB device database and service Lambda function in your AWS account.
 
 You can create one or more device clouds to segment your products and devices.
 
 ## Data Privacy
 
-The Device Cloud is created in your AWS account so you have total control and privacy regarding your device data. Device data goes directly from your devices to the Device Cloud in your account. The device data is not sent through EmbedThis servers or other AWS accounts. This is important as jurisdictions are increasingly requiring that data only be stored, processed and managed locally.
+The Device Cloud is created in your AWS account so you have total control and privacy regarding your device data. Device data goes directly from your devices to the Device Cloud in your account. The device data is not sent through EmbedThis servers or other AWS accounts. This is important as governments are increasingly requiring that data only be stored, processed and managed locally.
 
-Unlike other IoT services which store your device data in servers in their account, Ioto provides decreased latency by locating device data in your account in a region of your choosing. This lowers cost and boosts performance of your cloud-based management solution.
+Unlike other IoT services which store your device data in servers in their account, Ioto provides decreased latency by locating device data in your AWS account in a nearby region of your choosing. This lowers cost and boosts performance of your cloud-based management solution.
 
 ## Device Cloud Services
 
 The Ioto device cloud offers the following:
 
-* Automatically provision Ioto-based devices with certificates for secure communications.
+* Automatically provision Ioto-based devices with X.509 certificates for secure communications.
 * Setup MQTT communications between devices and the cloud.
 * Create and maintain a cloud-based device database store for centralized management and analytics.
-* Transparently create, manage and rotate dedicated AWS IAM access keys for each device.
+* Transparently create and manage dedicated AWS IAM access keys for each device.
 
 ## Device Certificates
 
@@ -44,26 +44,25 @@ When connected, your management applications can control devices, send commands 
 
 ## Device Data Aggregation
 
-Collecting, aggregating and sending device data to a central management store can be complex and costly. Ioto takes the pain out of exporting device data to the cloud by providing synchronizing the Ioto device agent database with an AWS DynamoDB database in your device cloud.
+Collecting, aggregating and sending device data to a central management store can be complex and costly. Ioto takes the pain out of exporting device data to the cloud by transparently synchronizing device data with the cloud.
 
-Data written on the device to the management database will be transparently exported to the cloud. Similarly, data written to the cloud database will be distributed to the appropriate devices as required. No programming is required.
+Device data written saved the device to the Ioto database will be transparently exported to the cloud. Similarly, data written to the cloud database will be distributed to appropriate devices as required. No programming is required.
 
 The database synchronization is full-duplex in that data can be modified in the device or in the cloud and it will be replicated to the other side. The synchronization is controllable on a per-device and per-table basis.
 
 This is similar to AWS Global Tables, but instead of acting inside AWS between AWS regions, it is between an AWS region and a device.
 
-This replicated device database is unique to Ioto and dramatically simplifies the creation of IoT solutions.
+The Ioto replicated device database is unique to Ioto and dramatically simplifies the creation of IoT solutions.
 
 ## Device Access Keys
 
 Ioto can optionally create and manage AWS IAM access keys for your devices. AWS uses IAM access keys to authenticate and authorize actors on AWS resources. The Ioto device cloud can create specific IAM keys to enable devices to issue requests to the device cloud and AWS services.
 
-The Ioto generated temporary IAM access keys have tightly controlled access permissions. The keys are automatically reissued as required and can be centrally controlled.
-
+Ioto generates temporary IAM access keys that have tightly controlled access permissions. The keys are automatically distributed to devices and reissued as required.
 
 ## Device Logging
 
-If required, device logs and files can be captured and sent to AWS CloudWatch logs for storage, governance and analysis.
+If required, device logs and files can be captured and sent to AWS CloudWatch logs for storage, analysis and governance.
 
 The Ioto agent can be configured without coding, to capture any O/S log or program output and send it to CloudWatch Logs. The Ioto agent log is similarly exportable.
 

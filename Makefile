@@ -5,7 +5,7 @@
 all: serve
 
 serve:
-	# (sleep 3 ; open http://127.0.0.1:9091) &
+	(sleep 10 ; open http://127.0.0.1:9091) &
 	mkdocs serve --dirtyreload
 
 build: doc
@@ -18,7 +18,6 @@ doc: sync
 
 sync:
 	pak sync
-
 
 LOCAL_MAKEFILE := $(strip $(wildcard ./.local.mk))
 

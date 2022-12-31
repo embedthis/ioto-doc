@@ -8,20 +8,23 @@ Finally, click the download link and select the Ioto source code package.
 
 The Ioto source distribution contains all the required source files, headers, and test frameworks to reconfigure, build, and verify Ioto. The software supports two methods for building from source.
 
-* Make or Nmake</a>
-* Visual Studio or Xcode
+* Make</a>
+* Xcode or Visual Studio Code
 
 You can build by typing **make** or you can select one of the IDE projects under the **projects** directory.
 
 Several build environments are supported:
 
 * **Linux** &mdash; Linux 4 with GNU C/C++
+* **Mac OS X** &mdash; Mac OS X 11 or later
+
+<!--
 * **Windows** &mdash; Microsoft Windows 8 with Visual Studio 2017 or later (Professional or Community Edition)
-* **Mac OS X** &mdash; Mac OS X 10.12 or later
+-->
 
-For other environments, you will need to cross-compile. The source code has been designed to run on FreeBSD, Linux, Windows, Mac OS X, VxWorks, FreeRTOS and other operating systems. It has been tested under Fedora and Ubuntu Linux based on the Linux 4 Kernel, Microsoft Windows 8 (32 and 64-bit), and MAC OS X 10.12.
+For other environments, you will need to cross-compile. The source code has been designed to run on FreeBSD, Linux, Mac OS X, VxWorks, FreeRTOS and other operating systems. It has been tested under Fedora and Ubuntu Linux based on the Linux 4 Kernel, and MAC OS X 11.
 
-## Building with Make or Nmake
+## Building with Make
 
 Ioto is provided with a suite of generated, pre-configured Makefiles for common platforms. These are simple, clean, generated makefiles that build a default configuration for a specific operating system. These makefiles are provided under the *./projects* directory.</p>
 
@@ -33,6 +36,7 @@ A top level Makefile is also provided that detects your operating system and CPU
 make
 ```
 
+<!--
 ### Windows Nmake
 
 On Windows, a *make.bat* file is provided to to invoke nmake. The make.bat file first invokes *projects/windows.bat* to setup the necessary Visual Studio environment variables for compiling. If you have already setup your Visual Studio environment by running *vcvarsall.bat*, the windows.bat will invoke the makefile without modifying your environment.
@@ -42,6 +46,7 @@ To build on Windows with nmake, type:
 ```bash
 make
 ```
+-->
 
 ## Modifying the Make Defaults
 
@@ -53,7 +58,9 @@ For example, to disable all AWS cloud integration:
 make ME_COM_CLOUD=0
 ```
 
-Configurable components are enabled by setting their corresponding ME_COM_NAME option to "1", and can be disabled by setting to "0". On windows, set the variables in your environment rather than passing on the command line.
+Configurable components are enabled by setting their corresponding ME_COM_NAME option to "1", and can be disabled by setting to "0".
+
+<!--On windows, set the variables in your environment rather than passing on the command line.-->
 
 By defining make variables such as CC and CFLAGS, you can modify the compiler options or cross-compile. This is the also the technique used when cross-compiling.</p>
 
@@ -68,16 +75,17 @@ The default configuration can be modified by setting make variables
 
 Set to 0 to disable and 1 to enable:
 
-  ME_COM_CLOUD       # Enable AWS cloud integration
-  ME_COM_SERIALIZE     # Enable Factory device serialization
+  ME_COM_CLOUD       # Enable/Disable all AWS cloud integration
+  ME_COM_DB          # Enable local database
   ME_COM_LOGS        # Enable ingestion of log files into AWS cloud
   ME_COM_MQTT        # Enable local MQTT client
+  ME_COM_SERIALIZE   # Enable Factory device serialization
   ME_COM_SHADOW      # Enable AWS IOT shadow support
   ME_COM_SSL         # Enable SSL/TLS
   ME_COM_SYNC        # Enable state sync with AWS database
   ME_COM_URL         # Enable local HTTP client
   ME_COM_WEB         # Enable local HTTP web server
-
+  
 For example, to disable the web server:
 
   ME_COM_WEB=0 make
@@ -88,7 +96,7 @@ To build with OpenSSL: Add ME_COM_OPENSSL_PATH when using a custom OpenSSL build
 
 Other make environment variables:
   ARCH               # CPU architecture (x86, x64, ppc, ...)
-  OS                 # Operating system (linux, macosx, windows, vxworks, ...)
+  OS                 # Operating system (linux, macosx, vxworks, ...)
   CC                 # Compiler to use
   LD                 # Linker to use
   CONFIG             # Output directory for built items. Defaults to OS-ARCH-PROFILE
@@ -173,9 +181,11 @@ make CC=/opt/bin/ccarm.exe LD=/opt/bin/ccarm.exe ARCH=arm PROFILE=release -f pro
 
 Ioto includes Visual Studio and Xcode projects that provide easy access for building and debugging. The generated IDE projects will build Ioto using default settings and are somewhat limited in their configurability.
 
+<!--
 ### Building with Visual Studio
 
 To build a Visual Studio project, run Visual Studio 2017 or later. Then open the relevant *projects/ioto-windows.sln* solution project. Select **Build Solution** to build. You may need to upgrade the projects in later Visual Studio releases. Don't forget to set the correct executable as the startup project before running the application.
+-->
 
 ### Building with Xcode
 
@@ -194,7 +204,7 @@ MbedTLS is a compact TLS implementation suitable for embedded devices. Ioto incl
 
 ### Downloading OpenSSL
 
-Most Linux distributions include OpenSSL with their default distribution. On Windows or MacOS you must first download OpenSSL (https://www.openssl.org/source/) and build it from source. We support the latest stable and LTS releases only. Once OpenSSL is built, you will need to supply the Ioto project with the pathname to your OpenSSL source code directory.
+Most Linux distributions include OpenSSL with their default distribution. We support the latest stable and LTS releases only. Once OpenSSL is built, you will need to supply the Ioto project with the pathname to your OpenSSL source code directory.
 
 
 ## Building with OpenSSL via Make

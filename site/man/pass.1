@@ -4,16 +4,13 @@ pass \- Create and manage passwords
 .SH SYNOPSIS
 .B pass
 [\fI--cipher bcrypt\fR]
-[\fI--file filename\fR]
 [\fI--password password\fR]
 realm username roles...
 
 .SH DESCRIPTION
-The pass program creates authentication passwords for the Ioto embedded web server.
+The pass program creates encrypted (hashed) authentication passwords for use by the Ioto embedded web server.
 
-.RS 5
-pass --file auth.json --password pass1 example.com joshua administrator buyer
-.RE
+These hashed passwords are typically stored in the Ioto embedded database.
 
 .RS 5
 pass --password pass1 example.com joshua administrator buyer
@@ -26,9 +23,6 @@ Specifies the cipher to use to hash the password. Default is Bcrypt. Blowfish is
 .TP
 \fB\--password password\fR
 Specifies a password to use to for the user.
-.TP
-\fB\--file filename\fR
-Update the specified password configuration file.
 .PP
 .SH DESCRIPTION
 The pass program is used to create and manage user passwords.

@@ -1,9 +1,9 @@
 
 # Ioto Background
 
-The Ioto device agent is a compact management agent and library. It provides AWS IoT cloud integration, HTTP web server, MQTT client, HTTP client, state persistency, provisioning and OTA upgrading.
+The Ioto device agent is a compact management agent and library. It provides AWS IoT cloud integration, HTTP web server, MQTT client, HTTP client, embedded database, cloud database sync, state persistency, provisioning and OTA upgrading.
 
-Ioto is fast and compact, with a tiny memory footprint of less than 150K of code.
+Ioto is fast and compact, with a tiny memory footprint of less than 200K of code.
 
 ![Ioto Agent Architecture](../images/ioto-agent.png)
 
@@ -79,6 +79,7 @@ The configuration files are:
 | auth.json5 | Authentication configuration for the web server. Includes defined roles, users and passwords.|
 | config.json5 | Primary Ioto configuration file. Configures enabled services, logging and log file ingestion |
 | device.json5 | Device registration configuration. |
+| local.json5 | Local configuration for development. |
 | provision.json5 | Cloud provisioning endpoints and keys. |
 | shadow.json5 | Local copy of the AWS IoT shadow state. |
 | web.json5 | Web server configuration file. |
@@ -87,15 +88,15 @@ See [Ioto Configuration](../configuration/) for more details.
 
 ## Ioto HTTP Web Server
 
-The Ioto web server is a fast, compact web server designed for management web applications and serving device data.
+The Ioto web server is a fast, compact web server designed for local device management and for hosting embedded device management applications. It can also be used for serving device data over the network.
 
 Management applications are best created using [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application) design techniques where the application is rendered locally in the browser and it requests pure-data from the device to populate dynamic content.
 
-Ioto is ideal for this approach. It includes an integrated embedded database, JSON parser and query engine to enable it to respond to HTTP requests with JSON payloads and remit responses in JSON.
+Ioto is ideal for this approach. It includes an integrated embedded database, JSON parser and query engine to enable it to receive HTTP requests with JSON payloads and remit responses in JSON.
 
 Ioto does not provide a web framework &mdash; nor do we believe that dynamically generating HTML is the most compact, secure or best approach for performing device management.
 
-Ioto includes a fully working sample single page application called Kickstart. This is a VueJS application that serves a sample device application for Ioto.
+A working sample single page application called Kickstart is available for download from the Builder. This is a VueJS application that serves a sample device application for Ioto.
 
 The core web services include:
 
@@ -110,9 +111,9 @@ The core web services include:
 * File upload.
 * Transfer chunk encoding in both directions.
 * Fully streaming receive and transmit data.
-* Binding URLs to C functions for dynamic content rendering.
+* Dynamic content rendering via binding URLs to C functions.
 
-The Ioto web server is exceptionally fast and will serve over 3K requests per second on a modest Raspberry PI 4 and yet runs using only 80K of code.
+The Ioto web server module is exceptionally fast and will serve over 3K requests per second on a modest Raspberry PI 4 and yet runs using only 80K of code.
 
 ## Agent Security</h2>
 

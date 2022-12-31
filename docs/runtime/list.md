@@ -13,7 +13,7 @@ RList *list = rAllocList(initialSize, flags);
 ```
 
 Lists can be created so that when the list is freed, each of the list items will also be freed.
-If the `flags` are set to R_DYNAMIC_VALUE, then rfree() will be called on each list item when the list is freed. If the flags are set to R_STATIC_VALUE (the default), then list items will not be freed.
+If the `flags` are set to R_DYNAMIC_VALUE, then rFree() will be called on each list item when the list is freed. If the flags are set to R_STATIC_VALUE (the default), then list items will not be freed.
 
 To free a list:
 

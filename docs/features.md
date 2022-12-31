@@ -100,7 +100,7 @@
 
 ### Performance
 
-* Tiny memory footprint. All-up is less than 150K code.
+* Tiny memory footprint. All-up is less than 200K code.
 * Single-threaded fiber coroutines provide an elegant, non-blocking, procedural programming paradigm without resorting to ugly callbacks or complex threads.
 * Web server request throughput (&gt; 9,300 requests per second on Raspberry PI 4).
 

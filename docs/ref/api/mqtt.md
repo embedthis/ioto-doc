@@ -31,6 +31,7 @@ The library supports [MQTT version 3.1.1](https://docs.oasis-open.org/mqtt/mqtt/
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___mqtt_1ga9b6e014b729eaefce2ff1b0633d0fb43" class="nameRef">mqttConnect</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *username, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *password, int flags, <a href="#group___mqtt_1ga6ebde7995602c324124f0c113db1ac9f" class="ref">MqttWaitFlags</a> waitFlags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Establish a session with the MQTT broker.</td></tr>
 <tr class="apiDef"><td class="apiType">void</td><td><a href="#mqtt_8h_1a33611971f4c2de4c3969186d1c17c5c6" class="nameRef">mqttFree</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Free an <a class="ref" href="#struct_mqtt">Mqtt</a> instance.</td></tr>
 <tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar*</a></td><td><a href="#group___mqtt_1gad6c3c32d833ac9ea804c82f305c849cd" class="nameRef">mqttGetError</a>(struct Mqtt *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Returns an error message for error code, error.</td></tr>
+<tr class="apiDef"><td class="apiType"><a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a></td><td><a href="#group___mqtt_1ga57c930f41498273b1c402aa27785d5ed" class="nameRef">mqttIsConnected</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Return true if the MQTT instance is connected to a peer.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___mqtt_1ga5ba53016e61198e1e5d8a277bf0fe915" class="nameRef">mqttMsgsInQueue</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the number of messages to send in the send queue.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___mqtt_1ga8a2d03432b642595445655cbcf1f331f" class="nameRef">mqttMsgsToSend</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the number of messages in the queue.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___mqtt_1ga562b37074ee9fc3d2af85ae301b4d343" class="nameRef">mqttPing</a>(<a href="#group___mqtt" class="ref">Mqtt</a> *mq)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Ping the broker.</td></tr>
@@ -231,6 +232,25 @@ Will and testament topic.
     </table></dd></dl>
     <dl><dt>Returns:</dt><dd>The associated error message.</dd></dl>
     <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
+    <dl><dt>See Also:</dt><dd>
+    </dd></dl>
+  </div>
+</div>
+<a name="group___mqtt_1ga57c930f41498273b1c402aa27785d5ed"></a>
+<div class="api">
+  <div class="prototype">
+    <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a>
+    mqttIsConnected
+(<a href="#struct_mqtt" class="ref">Mqtt</a> *mq)
+  </div>
+  <div class="apiDetail">
+<p>Return true if the MQTT instance is connected to a peer.</p>
+    <dl><dt>Parameters:</dt><dd>
+    <table class="parameters" title="Parameters">
+    <tr><td class="param">mq</td><td>The MQTT mq.</td>
+    </table></dd></dl>
+    <dl><dt>Returns:</dt><dd>True if connected.</dd></dl>
+    <dl><dt><b>API</b> Stability:</dt><dd>Prototype.</dd></dl>
     <dl><dt>See Also:</dt><dd>
     </dd></dl>
   </div>
@@ -608,9 +628,6 @@ Start of message.
 </td>
     <tr><td class="param"><a class="ref" href="#group___mqtt_1ga88ee4d58ea95789b576c9ac5fe017b28">MqttMsgState</a></td><td><td>state</td><td>
 Message send status.
-</td>
-    <tr><td class="param"><a class="ref" href="#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" external="/Users/mob/dev/mqtt/paks/osdep/doc/api/osdep.dtags">cchar</a> *</td><td><td>topic</td><td>
-Message topic string.
 </td>
     <tr><td class="param"><a class="ref" href="#group___mqtt_1gaf26b642b7ef813ac269f70aa245cc796">MqttPacketType</a></td><td><td>type</td><td>
 Message packet type.

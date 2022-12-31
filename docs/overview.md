@@ -21,7 +21,7 @@ If you only want an embedded web server, Ioto is easily configured to enable jus
 
 Ioto is optimized for embedded device management via an evolved, high performance management runtime that delivers exceptional throughput and effective memory utilization. Ioto eliminates the ugliness of event callbacks and the complexity of threads by using fiber coroutines. Ioto is compact and is especially effective in reducing per-request CPU and memory overhead.
 
-Ioto has a tiny memory footprint of only 150K of code. It is ideal for Linux and FreeRTOS systems and is easily ported to other platforms.
+Ioto has a tiny memory footprint of only 200K of code. It is ideal for Linux and FreeRTOS systems and is easily ported to other platforms.
 
 ## Deployed Widely
 

@@ -18,11 +18,20 @@ ioto [options]
 
 Option | Description
 -|-
+--account Token | Manager account for self-claiming.
 --background | Run Ioto in the background detached from the terminal.
+--cloud Token | Cloud claim token for self-claiming
 --debug | Emit very verbose debug tracing.
+--exit event|minutes | Exit on event or after 'minutes'.
 --home directory | Change to directory to run
+--id Token | Device claim ID. Overrides device.json5.
+--nolocal | Do not apply local.json5.
+--nosave | Run in-memory and do not save state.
+--product Token | Product claim ID. Overrides device.json5.
 --profile profile | Select execution profile from config.json
---timeouts | Disable timeouts for debugging
+--reset | Reset state to factory defaults.
+--test Suite | Run test suite from config/test.json5.
+--timeouts | Disable timeouts for debugging.
 --trace file[:type:from] | Trace to file.
 --verbose | Emit more verbose trace
 --version | Output version information

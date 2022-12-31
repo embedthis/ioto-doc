@@ -1,6 +1,6 @@
 # Database Synchronization
 
-Ioto takes the pain out of exporting device data into the cloud. It can automatically and transparently synchronize data between your device and cloud databases.
+Ioto takes the pain out of exporting device data into the cloud by automatically and transparently synchronizing data between your devices and a cloud device database.
 
 Ioto will synchronize data from the device cloud DynamoDB database in your AWS account and the embedded database in your devices. This is similar to AWS Global Tables, but instead of between AWS regions, it is between an AWS region and a device.
 

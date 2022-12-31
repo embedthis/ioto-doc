@@ -7,8 +7,11 @@ The configuration files are:
 | File | Description |
 |-|-|
 | auth.json5 | Authentication configuration for the web server. Includes defined roles, users and passwords.|
-| config.json5 | Primary Ioto configuration file. Configures enabled services, logging and log file ingestion |
+| [config.json5](../properties/) | Primary Ioto configuration file. Configures enabled services, logging and log file ingestion |
+| device.json5 | Device registration configuration. |
+| local.json5 | Local configuration for development. |
 | provision.json5 | Device and cloud provisioning configuration. |
+| [schema.json5](../../database/schemas/overview/) | Database data schema. |
 | shadow.json5 | Local copy of the AWS IoT shadow state. |
 | [web.json5](../web/configuration.md) | Web server configuration file. |
 
@@ -48,6 +51,30 @@ JSON/5 adds the following JavaScript features to JSON.
 ```
 
 Some Ioto configuration properties accept numeric values as human-readable string with unit suffixes. In this case, the value must be string. The **limits** and **timeouts** properties in the web.json5 file support the suffixes: unlimited, infinite, kb, k, mb, m, gb, g, byte, bytes, infinite, never, sec, secs, seconds, min, mins, minute, minutes, hr, hrs, hour, hours, day, days, week, weeks, month, months, year and years.
+
+## Profiles
+
+Configuration files can provide multiple property profiles that can be selected at runtime. When Ioto is run, it executes with selected profile. This is typically `prod` for production and `dev` for development. However, you can create your own profiles for any desired execution configuration such as `qa` or `test`.
+
+The Ioto profile is defined via the PROFILE environment variable or via the `--profile` command line option.
+
+Configuration profiles are defined under the **profiles** property in any configuration file. The relevant configuration properties are selected by the current Ioto **profile**.
+
+```javascript
+profiles: {
+    dev: {
+        limits: {
+        //  Override the default stack size
+        stack: '64k',
+    },
+    prod: {
+        trace: {
+            //  Send trace to a specific output file
+            path: 'ioto.log',
+        }
+    }
+}
+```
 
 ## config.json
 

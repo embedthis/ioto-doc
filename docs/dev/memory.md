@@ -12,16 +12,16 @@ A better approach is to proactively detect and handle memory allocation errors i
 
 The safe runtime provides three memory allocation routines that wrap the standard libc routines.
 
-* **ralloc** &mdash; Allocate memory
-* **rfree** &mdash; Free memory
-* **ralloct** &mdash; Allocate memory for a given type
+* **rAlloc** &mdash; Allocate memory
+* **rFree** &mdash; Free memory
+* **rAlloct** &mdash; Allocate memory for a given type
 
-The ralloc routine allocates memory and checks for memory failures and invokes the global exception handler if the memory allocation fails.
+The rAlloc routine allocates memory and checks for memory failures and invokes the global exception handler if the memory allocation fails.
 
-The rfree routine frees memory and is NULL tolerant. This routine accepts memory allocated via ralloc or malloc.
+The rFree routine frees memory and is NULL tolerant. This routine accepts memory allocated via rAlloc or malloc.
 
-The ralloct routine is a convenience function to allocate memory for a typed object. For example:
+The rAllocType routine is a convenience function to allocate memory for a typed object. For example:
 
 ```c
-mem = ralloct(struct shape);
+mem = rAlloc(struct shape);
 ```

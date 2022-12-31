@@ -4,7 +4,7 @@ site_name: Ioto Device Agent
 nav:
  - Ioto Device Agent: index.md
  - Getting Started:
-   - overview.md
+   - Overview: overview.md
    - Ioto Features: features.md
    - Installation: start/installation.md
    - Use Cases: start/uses.md
@@ -18,7 +18,9 @@ nav:
    - Configuration:
      - Overview: user/configuration.md
      - Initialization: user/initialization.md
-     - Configuration Properties: user/properties.md
+     - config.json5: user/properties.md
+     - device.json5: web/properties.md
+     - web.json5: web/properties.md
    - Programming Ioto:
      - Fiber Coroutines: dev/fiber.md
      - Memory Allocation: dev/memory.md
@@ -64,6 +66,10 @@ nav:
        - TLS Overview: web/tlsOverview.md
        - Security: web/security.md
        - Standards: standards/http.md
+     - KickStart:
+       - Overview: kickstart/overview.md
+       - Specs: kickstart/specs.md
+       - Screen Shots: kickstart/screenshots.md
    - Samples: dev/samples.md
  - AWS Integration:
    - Overview: aws/index.md
@@ -71,12 +77,13 @@ nav:
    - Provisioning Devices: aws/provisioning.md
    - Database Syncronization: aws/sync.md
    - Shadow State: aws/shadow.md
+   - OTA Updating: aws/updates.md
    - AWS IAM Access Keys: aws/keys.md
    - AWS APIs and SigV4: aws/apis.md
    - Uploading data to S3: aws/s3.md
    - Log File Export: aws/logs.md
    - CloudWatch Metrics: aws/metrics.md
-   - MQTT Messaging: dev/mqtt.md
+   - MQTT Messaging: aws/mqtt.md
    - Cloud Auditing: aws/cloudtrail.md
    # - OTA Upgrading: aws/ota.md
  - API Reference:

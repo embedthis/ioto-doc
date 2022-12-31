@@ -27,7 +27,9 @@ Json *json = jsonParse("{Weather: 'Sunny'}", 0);
 This parses the given JSON text and returns a Json instance which represents the in-memory parsed JSON tree.
 
 !!!Note
-    You can provide JSON or JSON/5 which permits more relaxed JSON format where keys may omit quotes and single quotes can be used on values.
+    You can provide data to parse as either JSON or JSON/5 format strings. JSON/5 which permits a more relaxed JSON format where property keys may omit quotes and single quotes can be used on values. Also, values can be multi-line strings and may use back-ticks instead of quotes to delimit the strings. Finally, the last item in an object map may be terminated with a trailing comma.
+
+### Getting Values
 
 To query a value from the JSON tree, use *jsonGet*:
 
@@ -49,7 +51,11 @@ and you can provide a default value to be returned as the last parameter if the 
 cchar *value = jsonGet(json, 0, "weather", "rainy");
 ```
 
+The second argument (0) in these calls defines the starting point from which to search. This is a numeric node ID. Don't worry about it for now, but you'll appreciate it later when searching deeper in a JSON tree.
+
 You can use the *jsonGetInt* and *jsonGetBool* APIs to return data as an integer or boolean data type.
+
+### Setting Values
 
 To update or set a value, use the *jsonSet* API:
 
@@ -58,6 +64,7 @@ jsonSet(json, 0, "weather", "sunny", 0);
 ```
 
 This will update the value of the given property in-memory. Again, you can use dotted key properties of any depth.
+
 
 ### Data Types
 
@@ -71,7 +78,7 @@ To remove a property, use *jsonRemove*:
 jsonRemove(json, 0, "weather");
 ```
 
-When you are finished with a JSON tree, free it with *jsonFree*
+When you are finished with a JSON tree, remember to free it with *jsonFree* to prevent memory leaks.
 
 ```c
 jsonFree(json)
@@ -162,8 +169,6 @@ for (ITERATE_JSON(json, 0, child, id)) {
 }
 ```
 
-Under the hood, ITERATE_JSON follows child
-
 ## Debugging
 
 Use the *jsonPrint* API to print a JSON tree to the console:
@@ -208,9 +213,15 @@ JSON/5 adds the following JavaScript features to JSON.
 
 ## Memory References
 
-The JSON engine returns results as static pointers into the in-memory tree. Results are returned as (const char*) or (cchar*) values and this saves having to duplicate strings. This reduces memory footprint and is much more efficient.
+The JSON engine returns values as static pointers into the in-memory tree. Values are returned as const char* (cchar)) values and this saves having to duplicate strings. This reduces memory footprint and is much more efficient.
 
-It is important not to cast returned values to (char*) or to modify the referenced strings using "dirty" programming to break the (const char) typing protection.
+It is important not to cast returned values to (char*) or to modify the referenced strings using "dirty" programming to break the const typing protection.
+
+## Optimizations
+
+When JSON parses text, it tokenizes the original text and uses it for individual property keys and values. This means the Ioto JSON parser does not need to re-allocate the JSON text and greatly reduces the memory footprint.
+
+JSON nodes are allocated in a single block which may need to grow if you insert new properties into a JSON tree. For this reason, JSON node references should not be persistently stored. JSON node IDs will be stable despite growing the node storage, but node reference will be re-based. If you need to store JSON node references, you should save IDs rather than node references. 
 
 ## References
 

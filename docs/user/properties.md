@@ -1,19 +1,105 @@
 # Configuration Properties
 
+These are the configuration properties for the primary **config/config.json** configuration file.
+
+See the following descriptions for other configuration files:
+
+
+| File | Description |
+|-|-|
+| [device.json5](../device-properties/) | Device configuration file. |
+| [schema.json5](../../database/schemas/overview/) | Database data schema. |
+| [web.json5](../web/configuration.md) | Web server configuration file. |
+
+## api
+
+| Name | api |
+|-|-|
+| Description | Collection of API endpoint URLs. |
+| Synopsis | `api: { "builder": "value", serialize: "value" }` |
+| Notes | The <b>api</b> property collection defines various API endpoints. The api.builder endpoint is for the Builder public API. The api.serialize endpoint is for your local device serialization service employed during device manufacture.|
+
+**Example**
+
+```javascript
+api: {
+    builder: 'https://api.admin.embedthis.com/api',
+    serialize: 'http://localhost:4100/ioto/serialize',
+}
+```
+
+## certs
+
+| Name | certs |
+|-|-|
+| Description | Ioto Certificates. |
+| Synopsis | `certs: { aws: 'path', url: 'path' }` |
+| Notes | The <b>certs.aws</b> property defines a filename for the AWS root certificate bundle. The <b>certs.url</b> property defines a root certificate bundle that is used to verify domains used by the URL client.<br><br>Ioto includes default certificates for the AWS root and URL root certificates.|
+
+**Example**
+
+```javascript
+certs: {
+    aws: 'certs/aws.crt',
+    url: 'certs/roots.crt',
+}
+```
+
+
+## database
+
+| Name | database |
+|-|-|
+| Description | Control the Ioto database. |
+| Synopsis | `database: { properties... }` |
+| Notes | The <b>database</b> property collection defines the database, schema and operational parameters that govern the Ioto database.The <b>path</b> property defines the filename of the on-disk database store. Ioto will also create a database journal log file that appends a ".jnl" extension to this path.<br><br>The <b>schema</b> property defines the database scheme that defines the database indexes, entities and data types.<br><br>The <b>maxJournalSize</b> defines how big the database journal log should grow before Ioto rewrites the database. The <b>maxJournalAge</b> defines how long data should be preserved in the journal log before the database file is updated. These values should be sufficiently log as writing updated data to the journal is much more efficient that updating the database file.<br><br> The <b>maxSyncAge</b> property defines how long changed database data should be buffered before synchronizing to the cloud. The <b>maxSyncSize</b> property defined how much data should be buffered before synchronizing to the cloud.|
+
+**Example**
+
+```javascript
+database: {
+    path: 'state/state.db',
+    schema: 'config/schema.json5',
+    maxJournalSize: '1mb',
+    maxJournalAge: '1min',
+    maxSyncAge: '5secs',
+    maxSyncSize: '10k',
+},
+```
+
+
+## directories
+
+| Name | directories |
+|-|-|
+| Description | Define default Ioto directories. |
+| Synopsis | `directories: { "log": ".", state: "./state" }` |
+| Notes | The <b>directories</b> property collection defines various directories used by Ioto. The directories.log directory is where log files will be saved. The directories.state directory is where runtime state including databases, provisioning information and shadow state will be stored.|
+
+**Example**
+
+```javascript
+directories: {
+    log: '/var/log',
+    state: 'state',
+}
+```
+
 ## limits
 
 | Name | limits |
 |-|-|
 | Description | Define execution limits for Ioto. |
 | Synopsis | `limits: { "key": "value", ... }` |
-| Notes | The <b>limits</b> property collection defines various execution limits for Ioto.|
+| Notes | The <b>limits</b> property collection defines various execution limits for Ioto. The limits.reconnect property defines the delay after MQTT communications are lost before the agent will reconnect. This is useful to throttle network load in the event of a network disconnection. The limits.stack property defines the default size of fiber coroutine stacks. |
 
 **Example**
 
 ```javascript
 limits: {
+    reconnect: '10secs',
     stack: '16K',
-},
+}
 ```
 
 
@@ -23,7 +109,7 @@ limits: {
 |-|-|
 | Description | Define the stack size of fiber coroutines for Ioto. |
 | Synopsis | `limits: { stack: "Number" }` |
-| Notes | The <b>limits.stack</b> property specifies the stack size for Ioto coroutines. This should be set to the maximum anticipated stack size for your executing code. Supplied Ioto code requires a stack size of 12K minimum.<br> <br>It is recommended that you minimize your use of big stack buffer variables and your use of deep recursion both of which require much bigger fiber stacks. |
+| Notes | The <b>limits.stack</b> property specifies the stack size for Ioto coroutines. This should be set to the maximum anticipated stack size for your executing code. The default stack size is 64K. The core Ioto code requires a stack size of 12K.<br> <br>It is recommended that you minimize your use of big stack buffer variables and your use of deep recursion both of which require much bigger fiber stacks. |
 
 **Example**
 
@@ -53,6 +139,26 @@ logs: {
 }
 ```
 
+## mqtt
+
+| Name | mqtt |
+|-|-|
+| Description | MQTT configuration. |
+| Synopsis | `mqtt: { properties }"` |
+| Notes | The <b>mqtt</b> property collection is used to configure MQTT communications to the cloud. The mqtt.cert and mqtt.key properties define filenames to the X.509 certificate and key used to secure MQTT communications. <br><br> The mqtt.client defines the MQTT client ID used to uniquely identify the device. <br><br>The alpn property defines the HTTPS ALPN identification string required when using HTTP port 443 for communications. The mqtt.ca property defines the authority certificate from AWS that is used as the root certificate to verify the MQTT broker endpoint. <br><br>The cert, key, client and endpoint properties can be set to "auto" to have their values dynamically configured from AWS IoT core at runtime. |
+
+**Example**
+```javascript
+mqtt: {
+    cert: 'auto',
+    key: 'auto',
+    client: 'auto',
+    endpoint: 'auto',
+    port: 443,
+    alpn: 'x-amzn-mqtt-ca',
+    ca: 'certs/aws.crt',
+}
+```
 
 ## profile
 
@@ -93,6 +199,20 @@ profiles: {
 }
 ```
 
+## scripts
+
+| Name | scripts |
+|-|-|
+| Description | Set of scripts used for various management tasks.|
+| Synopsis | `scripts: { update: './scripts/update'}` |
+| Notes | The <b>scripts.update</b> property defines a script that is invoked to apply software updates. The script is invoked with the pathname to the update image as the first and only argument.|
+
+```javascript
+scripts: {
+    update: './scripts/update'
+}
+```
+
 ## services
 
 | Name | services |
@@ -109,13 +229,13 @@ services: {
     cloud: {
         keys: true,
         logs: true,
+        mqtt: true,
         provision: true,
         serialize: 'auto',
         shadow: true,
         sync: true,
     },
     database: true,
-    mqtt: true,
     url: true,
     web: true
 }
@@ -139,3 +259,11 @@ trace: {
     sources: 'all'
 }
 ```
+
+## version
+
+| Name | Version |
+|-|-|
+| Description | Set the agent version. |
+| Synopsis | `version: "SemVer Version String"` |
+| Notes | The version string defines the versions of the embedded agent including your software. It is used when selecting software upgrades deployed from the Builder. Don't confuse this with the underlying Ioto version. The version string must conform to the [Semantic Versioning 2.0](https://semver.org/) spec.

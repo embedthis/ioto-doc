@@ -45,7 +45,7 @@ You should only select "both" as your **sync** direction for models that can be 
 
 To optimize network traffic, database changes will be sent up to the cloud in batches. These are controlled by the **database.syncDelay** and the **database.syncLimit** properties. The **syncDelay** is a delay before sending change batches to the cloud. The **syncLimit** is a size limit of the change set before sending a change batch. These are set to 5 seconds and 10K by default.
 
-You can force a sync save at any point by calling **iaSaveSync**.
+You can force a sync save at any point by calling **ioSync**.
 
 
 ## References

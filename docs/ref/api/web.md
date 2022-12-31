@@ -4,7 +4,7 @@ The web server library is a fast, compact web server designed for management web
 
 The web server does not attempt to offer ALL HTTP features and functions. Rather, it aims to implement only the required core of HTTP/1.1 and thus deliver a tiny, fast, secure embedded web server that is exceptionally good at serving single page web applications and device data.
 
-The web server supports: HTTP/1.0, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. The web server uses 80K of code and will run in 150K RAM (without TLS).
+The web server supports: HTTP/1.0, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. The web server uses 80K of code and will run in 200K RAM (without TLS).
 
 The core web services include:
 
@@ -241,6 +241,9 @@ Receive content length.
     <tr><td class="param"><a class="ref" href="#group___osdep_1ga7bac74916a564105339bcd5a9323c366" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">Offset</a></td><td><td>rxRemaining</td><td>
 Receive data remaining in the next chunk.
 </td>
+    <tr><td class="param"><a class="ref" href="#group___osdep_1ga91ad9478d81a7aaf2593e8d9c3d06a14" external="/Users/mob/dev/web/paks/osdep/doc/api/osdep.dtags">uint</a></td><td><td>secure</td><td>
+Has secure listening endpoint.
+</td>
     <tr><td class="param">struct WebSession *</td><td><td>session</td><td>
 Session state.
 </td>
@@ -467,7 +470,7 @@ Have the response headers been written.
     <table class="parameters" title="Parameters">
     <tr><td class="param">str</td><td>String to decode.</td>
     </table></dd></dl>
-    <dl><dt>Returns:</dt><dd>The string reference.</dd></dl>
+    <dl><dt>Returns:</dt><dd>The original string reference.</dd></dl>
     <dl><dt><b>API</b> Stability:</dt><dd>Evolving.</dd></dl>
     <dl><dt>See Also:</dt><dd>
     </dd></dl>

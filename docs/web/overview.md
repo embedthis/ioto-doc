@@ -6,7 +6,7 @@ Ioto can be configured to support the web server as an additional component or I
 
 The Ioto web server is unlike other enterprise or embedded web servers. It does not attempt to offer ALL HTTP features and functions. Rather, it aims to implement only the required core of HTTP/1.1 and thus deliver a tiny, fast, secure embedded web server that is exceptionally good at serving single page web applications and device data APIs.
 
-The Ioto web server supports a cohesive feature set including: HTTP/1, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. Yet Ioto remains very small from 80K code and will run in as little as 150K RAM. It will serve over 3,000 requests/sec on a modest Raspberry PI.</p>
+The Ioto web server supports a cohesive feature set including: HTTP/1, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. Yet Ioto remains very small from 80K code and will run in as little as 200K RAM. It will serve over 3,000 requests/sec on a modest Raspberry PI.</p>
 
 <img class="fit" src="../../../images/web-server.png" alt="web server" />
 

@@ -104,4 +104,4 @@ Ioto adopts a technique call NULL tolerance where APIs, wherever possible, toler
 
 The standard C library is not NULL tolerant. If you pass a NULL pointer to routines such as as free() or strlen() your program will crash.
 
-The Ioto memory allocator is NULL tolerant when calling **rfree**. Similarly, Ioto provides a safe string library that will accept NULL arguments wherever possible. In the case of strlen, Ioto provides **slen()** which will return zero if passed a NULL pointer.
+The Ioto memory allocator is NULL tolerant when calling **rFree**. Similarly, Ioto provides a safe string library that will accept NULL arguments wherever possible. In the case of strlen, Ioto provides **slen()** which will return zero if passed a NULL pointer.

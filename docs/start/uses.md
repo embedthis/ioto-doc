@@ -20,7 +20,7 @@ The Ioto agent will:
 
 - Send messages to AWS IoT and other services via MQTT.
 - Upload data and files to AWS S3.
-- Replicate and synchronize structured data to AWS DynamoDB.
+- Replicate structured device data to and from AWS DynamoDB.
 - Send control-plane data to AWS IoT Shadows.
 - Store Ioto, device and O/S logs in AWS CloudWatch logs.
 - Create device and operational metrics in AWS CloudWatch Metrics.
@@ -28,9 +28,9 @@ The Ioto agent will:
 
 ### Replicated Device Data
 
-Ioto can replicate device data from its internal embedded device database to an AWS DynamoDB database in the cloud. This replication can operate in either direction so that data can be both aggregated from devices or sent to devices.
+Ioto can replicate device data from its internal embedded device database to an AWS DynamoDB database in the cloud. This replication can operate in either direction so that data can be either sent to devices or aggregated from devices.
 
-This replication is transparent and the device developer does not need create any custom code to facilitate. The replication is configurable and granular on a table-by-table basis, and is resilient in the event of network outages.
+This replication is reliable and transparent and the device developer does not need create any custom code to implement. The replication is configurable and granular on a table-by-table basis, and is resilient in the event of network outages.
 
 ## HTTP Client
 
@@ -139,11 +139,11 @@ PUBLIC int iaStart(void)
     This call will block and wait for acknowledgement.
     Note: call blocks, but agent is not.
  */
-mqttSubscribe(agent->mqtt, incoming, MQTT_QOS_2, MQTT_WAIT_ACK, "/myDevice/change");
+mqttSubscribe(ioto->mqtt, incoming, MQTT_QOS_2, MQTT_WAIT_ACK, "/myDevice/change");
 
 /*
     Publish an "initialized" message with quality of service (1) which means send at most once.
     Don't wait for sending or acknowledgement.
  */
-mqttPublish(agent->mqtt, "Initialized", 0, MQTT_QOS_1, MQTT_WAIT_NONE, "/myDevice/init");
+mqttPublish(ioto->mqtt, "Initialized", 0, MQTT_QOS_1, MQTT_WAIT_NONE, "/myDevice/init");
 ```

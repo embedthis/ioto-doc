@@ -54,6 +54,9 @@ Here is a more detailed example:
 {
     web: {
         documents: "./site",
+        headers: {
+            'X-Frame-Options': 'SAMEORIGIN',
+        },
         index: "index.html",
         limits: {
             body: "100K",

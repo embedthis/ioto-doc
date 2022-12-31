@@ -16,7 +16,7 @@ The second approach of using non-blocking APIs with callbacks is simpler to debu
 
 ## Fiber Coroutines
 
-A compelling (emerging) alternative, is **Fiber coroutines**. A fiber coroutine is code that runs with its own stack and cooperatively yields to other fibers when it needs to wait.
+A compelling alternative, is to use **Fiber coroutines**. A fiber coroutine is code that runs with its own stack and cooperatively yields to other fibers when it needs to wait.
 
 You can think of a fiber as a thread, but only one fiber runs at a time so there is no need for thread locking or synchronizing. For Go programmers, fibers are like Go routines. For JavaScript developers, fibers are similar to async/await.
 

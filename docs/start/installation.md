@@ -27,13 +27,12 @@ To download Ioto, first create an account and login. Then define your product an
 
 The Ioto source distribution contains all the required source files, headers, and test frameworks to reconfigure, build, and verify Ioto. The software supports two methods for building from source.
 
-* Make or Nmake</a>
-* Visual Studio or Xcode
+* Make
+* Xcode
 
 You can build by simply typing **make** or you can select one of the IDE projects under the **projects** directory.
 
-
-Several build environments are supported including Linux, Windows and Mac OS X. For other environments, you will need to cross-compile.
+Several build environments are supported including Linux and Mac OS X. For other environments, you will need to cross-compile.
 
 For more details, read [Building from Source](../user/building.md) in the Developer guide.
 

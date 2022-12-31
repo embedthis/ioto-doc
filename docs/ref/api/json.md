@@ -38,14 +38,14 @@ The library supports the JSON and JSON/5 formats. JSON/5 is an extension of JSON
 <tr class="apiDef"><td class="apiType"><a href="#struct_json_node" class="ref">JsonNode*</a></td><td><a href="#group___json_1ga9204b4baef583a74adb0fce508568f64" class="nameRef">jsonGetChildNode</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, int nth)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the Nth child node for a json node.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga5c29505035b5e16a55f92dfb2cdf1012" class="nameRef">jsonGetId</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a json node ID.</td></tr>
 <tr class="apiDef"><td class="apiType"><a href="#struct_json_node" class="ref">JsonNode*</a></td><td><a href="#group___json_1gaee5ca0f227008c8480c64d42cd3691f2" class="nameRef">jsonGetNode</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a json node object.</td></tr>
-<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga1ad8adb95db1199134b32e72f74fd901" class="nameRef">jsonGetNumber</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, int defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a json node value as an integer.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga80188ee148b40aac962d92bb5f9aee04" class="nameRef">jsonGetNum</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, int defaultValue)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get a json node value as an integer.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1gada3b65456bfca0a48348bc86b204ef4d" class="nameRef">jsonGetType</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Get the value type for a node.</td></tr>
 <tr class="apiDef"><td class="apiType"><a href="#group___json" class="ref">Json*</a></td><td><a href="#group___json_1ga199f45f83998ad2272ebf3c653a179ab" class="nameRef">jsonParse</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *text, int flags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Parse a json string into a json object.</td></tr>
 <tr class="apiDef"><td class="apiType"><a href="#group___json" class="ref">Json*</a></td><td><a href="#group___json_1gabe29ca01a468f644d299667763e99b95" class="nameRef">jsonParseFile</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path, char **errorMsg, int flags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Load a JSON object from a filename.</td></tr>
 <tr class="apiDef"><td class="apiType"><a href="#group___json" class="ref">Json*</a></td><td><a href="#group___json_1ga198e16e4fcbec7d2545dd369a614b8cb" class="nameRef">jsonParseString</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *text, char **errorMsg, int flags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Parse a JSON string into an object tree and return any errors.</td></tr>
 <tr class="apiDef"><td class="apiType">void</td><td><a href="#group___json_1gaf4ba76c4c8aaacf67f392c7d932e9391" class="nameRef">jsonPrint</a>(<a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *label, <a href="#group___json" class="ref">Json</a> *json)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Print a JSON object.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga84cce656da3fe4d279b9d0db2f18d91a" class="nameRef">jsonRemove</a>(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Remove a Property from a JSON object.</td></tr>
-<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga3eb034bab3af4827e60f5a468a248453" class="nameRef">jsonSave</a>(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path, int mode, int flags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Save a JSON object to a filename.</td></tr>
+<tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1gacfc633df6228e3295e6a04b6da42bc00" class="nameRef">jsonSave</a>(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path, int mode, int flags)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Save a JSON object to a filename.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1gaeebd22fc330c08a802c882d19b16d53a" class="nameRef">jsonSet</a>(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *value, int type)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Update a key/value in the JSON object with a string value.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga8f827a05f77ea1fc5c06ec3e37714cc4" class="nameRef">jsonSetBool</a>(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1gad5c9d4ba3dc37783a528b0925dc981a0" class="ref">bool</a> value)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Update a property in the JSON object with a boolean value.</td></tr>
 <tr class="apiDef"><td class="apiType">int</td><td><a href="#group___json_1ga473e19c96d686fe08ca18d0acc2ea9f1" class="nameRef">jsonSetDate</a>(<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1gade1c8a9958f9e5394c2e78269e654872" class="ref">Time</a> value)</td></tr><tr class="apiBrief"><td>&nbsp;</td><td>Update a property in the JSON object with date value.</td></tr>
@@ -376,11 +376,11 @@ Result from jsonString.
     </dd></dl>
   </div>
 </div>
-<a name="group___json_1ga1ad8adb95db1199134b32e72f74fd901"></a>
+<a name="group___json_1ga80188ee148b40aac962d92bb5f9aee04"></a>
 <div class="api">
   <div class="prototype">
     int
-    jsonGetNumber
+    jsonGetNum
 (<a href="#group___json" class="ref">Json</a> *json, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, int defaultValue)
   </div>
   <div class="apiDetail">
@@ -524,12 +524,12 @@ Result from jsonString.
     </dd></dl>
   </div>
 </div>
-<a name="group___json_1ga3eb034bab3af4827e60f5a468a248453"></a>
+<a name="group___json_1gacfc633df6228e3295e6a04b6da42bc00"></a>
 <div class="api">
   <div class="prototype">
     int
     jsonSave
-(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path, int mode, int flags)
+(<a href="#group___json" class="ref">Json</a> *obj, int nid, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *key, <a href="r.html#osdep.html#group___osdep_1ga4f52f6802d742ebd12c628e69a2bd162" class="ref">cchar</a> *path, int mode, int flags)
   </div>
   <div class="apiDetail">
 <p>Save a JSON object to a filename.</p>
@@ -537,6 +537,7 @@ Result from jsonString.
     <table class="parameters" title="Parameters">
     <tr><td class="param">obj</td><td>Parsed JSON object returned by jsonParse.</td>
     <tr><td class="param">nid</td><td>Base node ID from which to start searching for key. Set to zero for the top level.</td>
+    <tr><td class="param">key</td><td>Property name to add/update. This may include &quot;.&quot;. For example: &quot;settings.mode&quot;.</td>
     <tr><td class="param">path</td><td>Filename path to contain the saved JSON string.</td>
     <tr><td class="param">flags</td><td>Same flags as for <a class="ref" href="#group___json_1gaaa118cefeb3521ea51613ba9a9b8bb1c">jsonToString</a>: JSON_PRETTY, JSON_QUOTES.</td>
     <tr><td class="param">mode</td><td>Permissions mode.</td>
