@@ -1,4 +1,4 @@
-IOTO(1)                           User Commands                          IOTO(1)
+IOTO(1)                          User Commands                         IOTO(1)
 
 
 
@@ -10,67 +10,109 @@ SYNOPSIS
        ioto [options]
 
        ioto
+           --account Token
            --background
+           --cloud Token
            --debug
+           --exit event|minutes
            --home directory
+           --id Token
+           --nolocal
+           --nosave
+           --product Token
            --profile profile
+           --reset
+           --test Suite
            --timeouts
-           --trace file[:type:source]
+           --trace file[:type:from]
            --verbose
            --version
 
+
 DESCRIPTION
-       Ioto is a compact device agent that includes an MQTT client, HTTP web
-       server, HTTP client and integration with AWS IoT. It can run as a stand-
-       alone as a device agent or the Ioto library can be embedded in
-       applications.
+       Ioto  is  a compact device agent that includes an MQTT client, HTTP web
+       server, HTTP client, embedded database,  JSON  parser  and  integration
+       with AWS IoT. It can run as a stand-alone as a device agent or the Ioto
+       library can be embedded in applications.
 
-       The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user
-       authentication, sessions, chunked transfers, file upload, and security
-       limits.
+       The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user  authentica-
+       tion, sessions, chunked transfers, file upload, and security limits.
 
-       Ioto normally reads a set of JSON configuration files. It reads the
-       config.json file for general configuration, the web.json for web server
-       configuration, auth.json for authentication configuration, and state.json
-       for persisted device state.
+       Ioto  normally  reads  a  set of JSON configuration files. It reads the
+       config.json5 file for general  configuration,  the  web.json5  for  web
+       server  configuration,  and  shadow.json5  for  persisted device shadow
+       state.
 
        Ioto can trace activities to a file that defaults to 'stdout'. This can
        be modified via the --trace command line option.
 
-       The --trace option specifies a destination file for trace messages. This
-       will override the trace property in the Ioto config.json file. The trace
-       argument syntax is fileName[:types:sources]. The types are a comma
-       separated list of message types. Valid types include: info, debug, error,
-       and trace. Sources are the code module names originating the trace
-       messages. You can use "all" for types and sources to match all
-       types/sources. You can also use "!type" and "!source" to negate a type or
-       source.
+       The  --trace  option  specifies  a destination file for trace messages.
+       This will override the trace property in the  Ioto  config.json5  file.
+       The  trace argument syntax is fileName[:types:sources]. The types are a
+       comma separated list of  message  types.  Valid  types  include:  info,
+       debug,  error, and trace. Sources are the code module names originating
+       the trace messages. You can use "all" for types and  sources  to  match
+       all  types/sources.  You can also use "!type" and "!source" to negate a
+       type or source.
 
        Ioto responds to the SIGUSR2 signal and increases the trace level.
 
 OPTIONS
-       --background
-              Run Ioto in the background and detach from the console.
+       --account ID
+              Override the account property in the device.json5  configuration
+              file  when  using  pre-claimed  device provisioning. The account
+              property should be set to the user's device manager  account  ID
+              obtained  from  the  Account/Settings  page in the manager site.
+              --background Run Ioto in the background and detach from the con-
+              sole.
+
+       --cloud Token
+              Override  the cloudToken property in the device.json5 configura-
+              tion file when using pre-claimed device provisioning. The cloud-
+              Token property should be set to the Builder cloud claim token.
 
        --debug
               Enable debug tracing. The -T option is an alias for --tracing.
 
+       --exit event|minutes
+              Exit  Ioto  when the given event is triggered or when the speci-
+              fied number of minutes have elapsed. Useful when performing lim-
+              ited tests.
+
        --home directory
               Change to the specified directory before running Ioto.
 
+       --id UCI
+              Override the id property in the device.json5 configuration file.
+              The id property should be set to unique device claim ID for  the
+              device.
+
        --trace file[:types:sources]
-              Name the Ioto trace file. The types are a comma separated list of
-              message types. Valid types include: info, debug, error, and trace.
-              Sources are the code module names originating the trace messages.
-              You can use "all" for types and sources to match all
-              types/sources. You can also use "!type" and "!source" to negate a
-              type or source.
+              Name  the  Ioto trace file. The types are a comma separated list
+              of message types. Valid types include: info, debug,  error,  and
+              trace.  Sources  are the code module names originating the trace
+              messages. You can use "all" for types and sources to  match  all
+              types/sources.  You can also use "!type" and "!source" to negate
+              a type or source.
+
+       --product Token
+              Override the productToken property in the device.json5  configu-
+              ration file when using pre-claimed device provisioning. The pro-
+              ductToken property should be set to the Builder product token.
 
        --profile profile
               Select the operational profile. Defaults to "prod".
 
+       --reset
+              Reset Ioto state to factory defaults. This erases database state
+              under the ./state directory.
+
+       --test suite
+              Run the select test described in the config/test.json5 test con-
+              figuration file.
+
        --timeouts
-              Run Ioto in debug mode and disable all timeouts. This disables
+              Run Ioto in debug mode and disable all timeouts.  This  disables
               request and session timeouts.
 
        --verbose
@@ -78,6 +120,7 @@ OPTIONS
 
        --version
               Output the product version number.
+
 
 FILES
        /etc/ioto
@@ -90,9 +133,6 @@ REPORTING BUGS
 COPYRIGHT
        Copyright (c) Embedthis Software.
 
-SEE ALSO
-       pass
 
 
-
-ioto                                June 2022                            IOTO(1)
+ioto                               June 2022                           IOTO(1)

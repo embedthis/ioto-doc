@@ -10,18 +10,17 @@
 
 </PRE>
 <H2>SYNOPSIS</H2><PRE>
-       <B>pass</B> [<I>--cipher</I> <I>bcrypt</I>] [<I>--file</I> <I>filename</I>] [<I>--password</I> <I>password</I>] realm
-       username roles...
+       <B>pass</B> [<I>--cipher</I> <I>bcrypt</I>] [<I>--password</I> <I>password</I>] realm username roles...
 
 
 
 </PRE>
 <H2>DESCRIPTION</H2><PRE>
-       The pass program creates authentication passwords for the Ioto embedded
-       web server.
+       The  pass  program  creates encrypted (hashed) authentication passwords
+       for use by the Ioto embedded web server.
 
-            pass --file auth.json --password pass1 example.com joshua
-            administrator buyer
+       These hashed passwords are typically stored in the Ioto embedded  data-
+       base.
 
             pass --password pass1 example.com joshua administrator buyer
 
@@ -30,14 +29,12 @@
 </PRE>
 <H2>OPTIONS</H2><PRE>
        <B>--cipher</B> <B>bcrypt|sha256</B>
-              Specifies the cipher to use to hash the password. Default is
+              Specifies  the  cipher  to  use to hash the password. Default is
               Bcrypt. Blowfish is substantially more secure.
 
        <B>--password</B> <B>password</B>
               Specifies a password to use to for the user.
 
-       <B>--file</B> <B>filename</B>
-              Update the specified password configuration file.
 
 
 </PRE>
@@ -57,10 +54,7 @@
 
 </PRE>
 <H2>SEE ALSO</H2><PRE>
-
-
-
-pass                                June 2022                            <B>PASS(1)</B>
+pass                               June 2022                           <B>PASS(1)</B>
 </PRE>
 <HR>
 <ADDRESS>

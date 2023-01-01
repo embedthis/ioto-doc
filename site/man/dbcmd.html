@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+<title>Ioto Man Page</title>
+</head>
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+</PRE>
+<H2>SYNOPSIS</H2><PRE>
+       <B>ioto</B> <B>[options]</B>
+       <B>ioto</B> <B>[options]</B>
+
+       <B>ioto</B>
+           <B>--background</B>
+           <B>--debug</B>
+           <B>--home</B> <B>directory</B>
+           <B>--profile</B> <B>profile</B>
+           <B>--timeouts</B>
+           <B>--trace</B> <B>file[:type:source]</B>
+           <B>--verbose</B>
+           <B>--version</B>
+
+
+</PRE>
+<H2>DESCRIPTION</H2><PRE>
+       Ioto is a compact device agent that includes an MQTT client, HTTP web
+       server, HTTP client and integration with AWS IoT. It can run as a stand-
+       alone as a device agent or the Ioto library can be embedded in
+       applications.
+
+       The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user
+       authentication, sessions, chunked transfers, file upload, and security
+       limits.
+
+       Ioto normally reads a set of JSON configuration files. It reads the
+       <B>config.json</B> file for general configuration, the <B>web.json</B> for web server
+       configuration, <B>auth.json</B> for authentication configuration, and <B>state.json</B>
+       for persisted device state.
+
+       Ioto can trace activities to a file that defaults to 'stdout'. This can
+       be modified via the --trace command line option.
+
+       The --trace option specifies a destination file for trace messages. This
+       will override the trace property in the Ioto config.json file. The trace
+       argument syntax is fileName[:types:sources]. The types are a comma
+       separated list of message types. Valid types include: info, debug, error,
+       and trace. Sources are the code module names originating the trace
+       messages. You can use "all" for types and sources to match all
+       types/sources. You can also use "!type" and "!source" to negate a type or
+       source.
+
+       Ioto responds to the SIGUSR2 signal and increases the trace level.
+
+
+</PRE>
+<H2>OPTIONS</H2><PRE>
+       <B>--background</B>
+              Run Ioto in the background and detach from the console.
+
+       <B>--debug</B>
+              Enable debug tracing. The <B>-T</B> option is an alias for --tracing.
+
+       <B>--home</B> <B>directory</B>
+              Change to the specified directory before running Ioto.
+              request and session timeouts.
+
+       <B>--verbose</B>
+              Run with more verbose tracing.
+
+       <B>--version</B>
+              Output the product version number.
+
+
+</PRE>
+<H2>FILES</H2><PRE>
+       <B>/etc/ioto</B>
+       <B>/var/www/ioto</B>
+       <B>/usr/local/lib/ioto</B>
+
+
+</PRE>
+<H2>REPORTING BUGS</H2><PRE>
+       Report bugs to dev@embedthis.com.
+
+
+</PRE>
+<H2>COPYRIGHT</H2><PRE>
+       Copyright (c) Embedthis Software.
+
+
+</PRE>
+<H2>SEE ALSO</H2><PRE>
+       pass
+
+
+
+ioto                                June 2022                            <B>IOTO(1)</B>
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>
+</html>

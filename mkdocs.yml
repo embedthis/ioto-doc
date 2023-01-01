@@ -19,7 +19,7 @@ nav:
      - Overview: user/configuration.md
      - Initialization: user/initialization.md
      - config.json5: user/properties.md
-     - device.json5: web/properties.md
+     - device.json5: user/device-properties.md
      - web.json5: web/properties.md
    - Programming Ioto:
      - Fiber Coroutines: dev/fiber.md
@@ -66,11 +66,11 @@ nav:
        - TLS Overview: web/tlsOverview.md
        - Security: web/security.md
        - Standards: standards/http.md
-     - KickStart:
-       - Overview: kickstart/overview.md
-       - Specs: kickstart/specs.md
-       - Screen Shots: kickstart/screenshots.md
-   - Samples: dev/samples.md
+   - Local Device Manager:
+     - Overview: kickstart/overview.md
+     - Specs: kickstart/specs.md
+     - Screen Shots: kickstart/screenshots.md
+     - Samples: dev/samples.md
  - AWS Integration:
    - Overview: aws/index.md
    - Device Clouds: aws/device-clouds.md
@@ -100,6 +100,7 @@ nav:
      - Safe Runtime: ref/api/r.md
      - HTTP Client: ref/api/url.md
      - Web Server: ref/api/web.md
+   - Man Pages: ref/man.md
  - Download: https://admin.embedthis.com/product" target="_blank
  - EmbedThis: https://www.embedthis.com" target="_blank
  - Blog: https://www.embedthis.com/blog" target="_blank

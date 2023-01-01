@@ -2,11 +2,14 @@
 #	Build the documentation
 #
 
-all: serve
+all: run
 
-serve:
+run:
 	(sleep 10 ; open http://127.0.0.1:9091) &
 	mkdocs serve --dirtyreload
+
+serve:
+	mkdocs serve
 
 build: doc
 

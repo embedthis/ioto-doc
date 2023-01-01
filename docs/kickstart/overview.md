@@ -1,11 +1,20 @@
-# Kickstart Overview
+# Device Management
 
-Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your device management application.
+Ioto includes a sample local device manager called KickStart.
+
+Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your embedded device management application.
 
 The Kickstart app demonstrates the capabilities and experience provided by an application created with Ioto and VueJS.
 
 ![Kickstart](../images/kickstart/home.png){.screen}
 
+## Cloud-Based Device Management
+
+A device with the Kickstart agent can also be managed from the cloud using the Ioto Manager that is created with a device cloud.
+
+The Kickstart sample includes a skin for the Ioto cloud-based Device Manager under the ./cloud directory.
+
+This skin provides a device data schema (Schema.json), display definition (Display.json), logo and custom components (Components.js). These are available in the ./cloud/upload directory for upload to the Builder. Use the Builder Cloud / Edit panel and select "Update Manager UI" and upload each of these assets and save the device cloud configuration. This will recreate the Ioto Manager application.
 
 ## Kickstart Specs
 

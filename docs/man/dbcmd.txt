@@ -1,0 +1,62 @@
+DBCMD(1)                         User Commands                        DBCMD(1)
+
+
+
+NAME
+       dbcmd- Ioto database command
+
+SYNOPSIS
+       dbcmd [options] --schema schema.json database [model] [field=value]
+
+       dbcmd
+           --load data.json
+           --reset
+           --schema schema.json
+
+
+DESCRIPTION
+       The  dbcmd  utility is a database manager and query utility to interact
+       with the Ioto embedded database. It can be used to query and set  data-
+       base values and reset or load seed data into the Ioto database.
+
+       The  --schema  option  specifies  the  database schema that defines the
+       database entities, fields and data types. This option is required.
+
+
+       The database file is specified as the first non-option argument. If  no
+       other  arguments  are  provided,  the  data  items  of the database are
+       printed to stdout as a series of JSON objects.
+
+       If a model argument is provided after the database file, then only data
+       items of that model type are printed.
+
+       If a field=value argument is provided, database items that have a field
+       with the specified value will be printed.
+
+OPTIONS
+       The --load option specifies a JSON file from which to  load  data.  The
+       JSON format is an object map of entities with an array of data items.
+
+       For example:
+
+       {
+           User: [
+               { name: 'Peter', role: 'user' },
+               { name: 'Elisha', role: 'admin' },
+           ] }
+
+       The --reset command will reset the  database  and  erase  all  existing
+       items in the database.
+
+
+
+       REPORTING BUGS
+              Report bugs to dev@embedthis.com.
+
+COPYRIGHT
+       Copyright (c) Embedthis Software.
+
+
+
+
+dbcmd                              June 2022                          DBCMD(1)
