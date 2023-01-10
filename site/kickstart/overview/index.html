@@ -2551,7 +2551,7 @@
   <span class="md-ellipsis">
     
   
-    Local Device Manager
+    Device Manager
   
 
     
@@ -2562,12 +2562,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" aria-label="Local Device Manager" data-md-level="2">
+        <nav class="md-nav" aria-label="Device Manager" data-md-level="2">
           <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Local Device Manager
+    Device Manager
   
 
           </label>
@@ -3876,14 +3876,16 @@
 
 
 <h1 id="device-management">Device Management</h1>
-<p>Ioto includes a sample local device manager called KickStart.</p>
-<p>Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your embedded device management application.</p>
+<p>Ioto has a sample device manager called <strong>KickStart</strong> that can be downloaded via the Builder.</p>
+<p>Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your device management applications.</p>
 <p>The Kickstart app demonstrates the capabilities and experience provided by an application created with Ioto and VueJS.</p>
+<p>It includes a local, embedded management app that runs within your device and serves a browser-based management user interface.</p>
+<p>It also includes a skin for the Ioto Cloud Device Manager that communicated with the embedded Kickstart/Ioto agent, but enables management of one or more devices via the cloud.</p>
 <p><img alt="Kickstart" class="screen" src="../../images/kickstart/home.png" /></p>
 <h2 id="cloud-based-device-management">Cloud-Based Device Management</h2>
-<p>A device with the Kickstart agent can also be managed from the cloud using the Ioto Manager that is created with a device cloud.</p>
-<p>The Kickstart sample includes a skin for the Ioto cloud-based Device Manager under the ./cloud directory.</p>
-<p>This skin provides a device data schema (Schema.json), display definition (Display.json), logo and custom components (Components.js). These are available in the ./cloud/upload directory for upload to the Builder. Use the Builder Cloud / Edit panel and select "Update Manager UI" and upload each of these assets and save the device cloud configuration. This will recreate the Ioto Manager application.</p>
+<p>This skin approximates the functionality of the local Kickstart app, but allows management of multiple devices via the cloud.</p>
+<p>The Kickstart app provides the manager cloud skin under the ./cloud/upload directory. It include a cloud device data schema (Schema.json), display definition (Display.json), logo and custom components (Components.js). These are available in the ./cloud/upload directory for upload to the Builder. Use the Builder Cloud / Edit panel and select <strong>Update Manager UI</strong> and upload each of these assets and save the device cloud configuration. This will recreate the Ioto Manager application.</p>
+<p>For more details, consult the <a href="">Builder Device Manager Documentation</a></p>
 <h2 id="kickstart-specs">Kickstart Specs</h2>
 <p>Read the <a href="../specs/">Kickstart Tech Specs</a> for full details.</p>
 <p>Kickstart Screens</p>
@@ -3905,7 +3907,7 @@
 </ul>
 <h2 id="licensing-for-kickstart">Licensing for Kickstart</h2>
 <p>Kickstart is free for Ioto customers.</p>
-<p>Download from the Products page in <a href="https://admin.embedthis.com">Embedthis Admin</a></p>
+<p>Download from the Products page in <a href="https://admin.embedthis.com">Embedthis Builder</a>.</p>
 <h2 id="best-practices">Best Practices</h2>
 <p>Kickstart uses proven designs and best-practices to lower development risk. It includes most of the required elements for a secure web application, so you can eliminate months off your development schedule.</p>
 

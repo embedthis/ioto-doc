@@ -2238,22 +2238,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ioto-configuration" class="md-nav__link">
+  <a href="#ioto-quick-tour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ioto Configuration
+        Ioto Quick Tour
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ioto Configuration">
+    <nav class="md-nav" aria-label="Ioto Quick Tour">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http-core" class="md-nav__link">
+  <a href="#starting-ioto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HTTP Core
+        Starting Ioto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ioto-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ioto Background
       
     </span>
   </a>
@@ -2721,7 +2743,7 @@
   <span class="md-ellipsis">
     
   
-    Local Device Manager
+    Device Manager
   
 
     
@@ -2732,12 +2754,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" aria-label="Local Device Manager" data-md-level="2">
+        <nav class="md-nav" aria-label="Device Manager" data-md-level="2">
           <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Local Device Manager
+    Device Manager
   
 
           </label>
@@ -3914,22 +3936,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ioto-configuration" class="md-nav__link">
+  <a href="#ioto-quick-tour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ioto Configuration
+        Ioto Quick Tour
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ioto Configuration">
+    <nav class="md-nav" aria-label="Ioto Quick Tour">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http-core" class="md-nav__link">
+  <a href="#starting-ioto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HTTP Core
+        Starting Ioto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ioto-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ioto Background
       
     </span>
   </a>
@@ -4016,7 +4060,7 @@
 <p>Ioto can be configured to support the web server as an additional component or Ioto can be build to run only the web server and thus be a first-class replacement for any embedded web server. Embedthis has been developing embedded web servers for many years and the Ioto web server contains all that we have learned over this period.</p>
 <p>The Ioto web server is unlike other enterprise or embedded web servers. It does not attempt to offer ALL HTTP features and functions. Rather, it aims to implement only the required core of HTTP/1.1 and thus deliver a tiny, fast, secure embedded web server that is exceptionally good at serving single page web applications and device data APIs.</p>
 <p>The Ioto web server supports a cohesive feature set including: HTTP/1, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. Yet Ioto remains very small from 80K code and will run in as little as 200K RAM. It will serve over 3,000 requests/sec on a modest Raspberry PI.</p></p>
-<p><img class="fit" src="../../../images/web-server.png" alt="web server" /></p>
+<p><img class="fit" src="../../images/web-server.png" alt="web server" /></p>
 <h2 id="goals">Goals</h2>
 <p>Our target use-cases for the Ioto web server were:</p>
 <ul>
@@ -4108,9 +4152,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="ioto-configuration">Ioto Configuration</h2>
+<h2 id="ioto-quick-tour">Ioto Quick Tour</h2>
 <p>The web server uses a <strong>web.json5</strong> JSON/5 configuration file that specifies what ports and addresses to listen on, where to find the web pages, and how to route requests. This file is read when Ioto starts.</p>
-<p>The Ioto web server is enabled via the config.json5 file. Set the **services.web" property to true.</p>
+<p>The Ioto web server is enabled via the config.json5 file. Set the <strong>services.web</strong> property to true.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
@@ -4173,14 +4217,30 @@
 <p>The <strong>documents</strong> directory specifies where your web pages are located.  The <strong>listen</strong> property nominates the IP:PORT endpoints on which you wish to listen, and the <strong>tls</strong> property specifies your TLS private key file and certificate file.</p>
 <p>The <strong>redirect</strong> property ensures all HTTP traffic is redirected over TLS. And finally, the <strong>routes</strong> property defines a set of processing rules for incoming requests. These rules can specify required roles (capabilities) for a user to be authenticated to access the URL.</p>
 <p>See <a href="../configuration/">Web Server Configuration</a> for details.</p>
-<h3 id="http-core">HTTP Core</h3>
+<h3 id="starting-ioto">Starting Ioto</h3>
+<p>You can manually run ioto via:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>ioto -v
+</code></pre></div></td></tr></table></div>
+<p>This will emit:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>app info: Ioto <span class="m">1</span>.0.2 starting
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>web info: Listening http://:80
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>web info: Listening https://:443
+</code></pre></div></td></tr></table></div></p>
+<p>The <strong>-v</strong> means run in verbose mode where request to the server will be traced to the console. You can also run in debug mode via <strong>-D</strong> which emits more debug trace.</p>
+<h3 id="testing">Testing</h3>
+<p>You can request a file from the server now with the <code>curl</code> utility:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>curl http://localhost/index.html
+</code></pre></div></td></tr></table></div>
+<h3 id="ioto-background">Ioto Background</h3>
 <p>The Ioto HTTP core is responsible for parsing the incoming HTTP request. A HTTP request is comprised of a request line followed by one or more HTTP headers that provide additional context.</p>
 <p>The first line of the HTTP request specifies the HTTP operation method to use, the URI to access and the variant of the HTTP protocol to use. This typically looks like:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">&lt;b&gt;GET&lt;/b&gt; /index.html HTTP/1.1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="err">&lt;b&gt;GET&lt;/b&gt; /index.html HTTP/1.1</span>
 </code></pre></div></td></tr></table></div>
 <p>This example is asking for the /index.html document via the GET method using the HTTP/1.1 protocol.</p>
 <p>After the first line follow the headers. These are keyword, value pairs that control how the request will be processed. Typically there are 5-15 headers in most requests.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>HeaderName: value
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>HeaderName: value
 </code></pre></div></td></tr></table></div>
 <p>Some typical headers are:</p>
 <table>
@@ -4226,11 +4286,11 @@
 </tbody>
 </table>
 <p>For example:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Connection: keep-alive
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Connection: keep-alive
 </code></pre></div></td></tr></table></div>
 <p>The HTTP core stores the parsed headers and their values for access by the request handlers. When all the headers have been processed Ioto proceeds to do request routing. This will occur before any associated POST data has been read from the client. POST data may be form data submitted by the client or it may be a file upload using the PUT method.</p>
 <h2 id="request-routing">Request Routing</h2>
-<p>Ioto has a simple request routing engine that processes client HTTP requests and validates access using a role-based access control mechanism. The routing engine is configured with a set of routes from the Ioto configuration file. When a request is received, it examines the routes in sequence and selects the first matching route to handle the request.</p>
+<p>Ioto has a flexible request routing engine that processes client HTTP requests and validates access using a role-based access control mechanism. The routing engine is configured with a set of routes from the Ioto configuration file. When a request is received, it examines the routes in sequence and selects the first matching route to handle the request.</p>
 <p>Handlers are responsible for receiving the request and creating a response. They generate response content based on the HTTP request URI, headers, any associated body data, and potential application session state. The output data flows through the output pipeline before transmission over the network to the client.</p>
 <p>Ioto supports two request handlers:</p>
 <ul>
@@ -4250,52 +4310,52 @@
 <p>The main benefit of fibers, is a non-blocking straight line procedural programming style.</p>
 <p>A fiber coroutine is code that runs with its own stack and cooperatively yields to other fibers when it needs to wait. You can think of a fiber as a thread, but only one fiber runs at a time so there is no thread sync to worry about. For Go programmers, fibers are like Go routines. For JavaScript developers, fibers are similar to async/await.</p>
 <p>You can read more in <a href="../../dev/fiber/">Fiber Coroutines</a>, but for now, consider this sample Action routine:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-5-10">10</a></span>
-<span class="normal"><a href="#__codelineno-5-11">11</a></span>
-<span class="normal"><a href="#__codelineno-5-12">12</a></span>
-<span class="normal"><a href="#__codelineno-5-13">13</a></span>
-<span class="normal"><a href="#__codelineno-5-14">14</a></span>
-<span class="normal"><a href="#__codelineno-5-15">15</a></span>
-<span class="normal"><a href="#__codelineno-5-16">16</a></span>
-<span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span>
-<span class="normal"><a href="#__codelineno-5-20">20</a></span>
-<span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">testAction</span><span class="p">(</span><span class="n">Web</span><span class="w"> </span><span class="o">*</span><span class="n">web</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="kt">char</span><span class="w">  </span><span class="n">buf</span><span class="p">[</span><span class="n">ME_BUFSIZE</span><span class="p">];</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="n">ssize</span><span class="w"> </span><span class="n">nbytes</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="c1">//  Read POST body data. This will block, but other fibers can still run.</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">nbytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">webRead</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Got body data %.*s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="c1">//  Streaming a response without buffering and with minimal memory footprint</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10000000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">        </span><span class="c1">//  This will block as required, but other fibers can still run.</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">        </span><span class="n">webWriteFmt</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World, now is: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rFormatLocalTime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">    </span><span class="c1">//  Finalize</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">    </span><span class="n">webWrite</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">testAction</span><span class="p">(</span><span class="n">Web</span><span class="w"> </span><span class="o">*</span><span class="n">web</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="kt">char</span><span class="w">  </span><span class="n">buf</span><span class="p">[</span><span class="n">ME_BUFSIZE</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="n">ssize</span><span class="w"> </span><span class="n">nbytes</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="c1">//  Read POST body data. This will block, but other fibers can still run.</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">nbytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">webRead</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Got body data %.*s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">    </span><span class="c1">//  Streaming a response without buffering and with minimal memory footprint</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10000000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">        </span><span class="c1">//  This will block as required, but other fibers can still run.</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">        </span><span class="n">webWriteFmt</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World, now is: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rFormatLocalTime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">    </span><span class="c1">//  Finalize</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">    </span><span class="n">webWrite</span><span class="p">(</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h2 id="json-parser-and-query-engine">JSON Parser and Query Engine</h2>
 <p>Ioto includes an integrated JSON parser, query engine and persistency to enable it to respond to HTTP requests with JSON payloads and remit responses in JSON.</p>
 <h2 id="ioto-kickstart">Ioto Kickstart</h2>
-<p>Ioto includes a fully working sample single page application called Kickstart. This is a VueJS application that serves a sample device application from Ioto.</p>
+<p>Ioto has a fully working sample single page application called [Kickstart]. This is a VueJS application that serves a sample device application from Ioto.</p>
 
 
 

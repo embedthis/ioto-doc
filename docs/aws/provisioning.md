@@ -100,13 +100,13 @@ Before leaving the factory, when the device first powers on during system test, 
 
 The agent will send the contents of the device.json5 over an encrypted TLS connection to the Ioto cloud service. This registration request includes the device UCI and the product ID. Once received and validated, the Ioto cloud service will save the information in the Ioto device registration database.
 
-The Ioto agent then awaits for a user to claim the device.
+If using User-claimed devices, the Ioto agent then awaits for a user to claim the device. If using Pre-claimed devices, the Ioto agent will skip the claiming step and proceed retrieve the required MQTT certificates and securely connect to the cloud.
 
 ## Device Claiming
 
-When a user purchases or installs a device with the Ioto agent, they can "claim" the device to manage it.
-
 When creating a device cloud, Ioto creates a device manager web site for your cloud. The Ioto Device Manager is a generic (white-label) device manager for your devices. It can be extensively customized with your logo, product name and device specific screens and panels. Use the Builder to customize the Device Manager to suit your needs.
+
+When a user purchases or installs a device with the Ioto agent, they can "claim" the device to manage it.
 
 The user claims their device by logging onto the device cloud manager web site and claims the device using the UCI printed on the device label.
 
@@ -116,4 +116,10 @@ They enter the device claim code into a form on the manager site. The device man
 
 When the device is unclaimed, the Ioto agent will regularly check with the Ioto service to see if it has been claimed. In this state, it is "unmanaged" and awaiting orders.
 
-The Ioto agent will check the Ioto service immediately on power-on, and then every 5 seconds with an exponentially increasing delay period up to a defined limit. If the device is rebooted, the polling process recommences.
+The Ioto device agent will check the Ioto service immediately on power-on, and then every 5 seconds with an exponentially increasing delay period up to a defined limit. If the device is rebooted, the polling process recommences.
+
+After device claiming, when the device will be provided the X.509 certificate and keys when it next connects or polls the service. The device will save the certificates and keys, then connect to the device cloud. This completes the provisioning process.
+
+## Pre-Claiming Devices
+
+If you are using pre-claimed devices, the process is similar, except you claim the device from the Ioto Manager when the device is made. Otherwise the process is the same.

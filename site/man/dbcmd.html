@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-<title>Ioto Man Page</title>
+<title>Dbcmd Man Page</title>
 </head>
 <HTML>
 <BODY>
@@ -10,80 +10,56 @@
 
 </PRE>
 <H2>SYNOPSIS</H2><PRE>
-       <B>ioto</B> <B>[options]</B>
-       <B>ioto</B> <B>[options]</B>
+       <B>dbcmd</B> <B>[options]</B> <B>--schema</B> <B>schema.json</B> <B>database</B> <B>[model]</B> <B>[field=value]</B>
 
-       <B>ioto</B>
-           <B>--background</B>
-           <B>--debug</B>
-           <B>--home</B> <B>directory</B>
-           <B>--profile</B> <B>profile</B>
-           <B>--timeouts</B>
-           <B>--trace</B> <B>file[:type:source]</B>
-           <B>--verbose</B>
-           <B>--version</B>
+       <B>Options</B>
+           <B>--load</B> <B>data.json</B>
+           <B>--reset</B>
+           <B>--schema</B> <B>schema.json</B>
+
 
 
 </PRE>
 <H2>DESCRIPTION</H2><PRE>
-       Ioto is a compact device agent that includes an MQTT client, HTTP web
-       server, HTTP client and integration with AWS IoT. It can run as a stand-
-       alone as a device agent or the Ioto library can be embedded in
-       applications.
+       The  dbcmd  utility is a database manager and query utility to interact
+       with the Ioto embedded database. It can be used to query and set  data-
+       base values and reset or load seed data into the Ioto database.
 
-       The Ioto web server supports HTTP/1.0, HTTP/1.1, TLS, user
-       authentication, sessions, chunked transfers, file upload, and security
-       limits.
+       The  --schema  option  specifies  the  database schema that defines the
+       database entities, fields and data types. This option is required.
 
-       Ioto normally reads a set of JSON configuration files. It reads the
-       <B>config.json</B> file for general configuration, the <B>web.json</B> for web server
-       configuration, <B>auth.json</B> for authentication configuration, and <B>state.json</B>
-       for persisted device state.
 
-       Ioto can trace activities to a file that defaults to 'stdout'. This can
-       be modified via the --trace command line option.
+       The database file is specified as the first non-option argument. If  no
+       other  arguments  are  provided,  the  data  items  of the database are
+       printed to stdout as a series of JSON objects.
 
-       The --trace option specifies a destination file for trace messages. This
-       will override the trace property in the Ioto config.json file. The trace
-       argument syntax is fileName[:types:sources]. The types are a comma
-       separated list of message types. Valid types include: info, debug, error,
-       and trace. Sources are the code module names originating the trace
-       messages. You can use "all" for types and sources to match all
-       types/sources. You can also use "!type" and "!source" to negate a type or
-       source.
+       If a model argument is provided after the database file, then only data
+       items of that model type are printed.
 
-       Ioto responds to the SIGUSR2 signal and increases the trace level.
+       If a field=value argument is provided, database items that have a field
+       with the specified value will be printed.
 
 
 </PRE>
 <H2>OPTIONS</H2><PRE>
-       <B>--background</B>
-              Run Ioto in the background and detach from the console.
+       The --load option specifies a JSON file from which to  load  data.  The
+       JSON format is an object map of entities with an array of data items.
 
-       <B>--debug</B>
-              Enable debug tracing. The <B>-T</B> option is an alias for --tracing.
+       For example:
 
-       <B>--home</B> <B>directory</B>
-              Change to the specified directory before running Ioto.
-              request and session timeouts.
+       {
+           User: [
+               { name: 'Peter', role: 'user' },
+               { name: 'Elisha', role: 'admin' },
+           ] }
 
-       <B>--verbose</B>
-              Run with more verbose tracing.
-
-       <B>--version</B>
-              Output the product version number.
+       The --reset command will reset the  database  and  erase  all  existing
+       items in the database.
 
 
-</PRE>
-<H2>FILES</H2><PRE>
-       <B>/etc/ioto</B>
-       <B>/var/www/ioto</B>
-       <B>/usr/local/lib/ioto</B>
 
-
-</PRE>
-<H2>REPORTING BUGS</H2><PRE>
-       Report bugs to dev@embedthis.com.
+       <B>REPORTING</B> <B>BUGS</B>
+              Report bugs to dev@embedthis.com.
 
 
 </PRE>
@@ -91,13 +67,6 @@
        Copyright (c) Embedthis Software.
 
 
-</PRE>
-<H2>SEE ALSO</H2><PRE>
-       pass
-
-
-
-ioto                                June 2022                            <B>IOTO(1)</B>
 </PRE>
 <HR>
 <ADDRESS>

@@ -38,4 +38,4 @@ The Ioto agent will issue a **checkin** HTTP request to the device cloud each da
 
 If there is an applicable update, Ioto will download the image, verify the contents and then signal that an update is ready.
 
-Your embedded code can watch for update events via the **rWatch** API. Alternatively, you can customize the **scripts/update** shell script that will be passed the local filename containing the update.
+Your embedded code can watch for "device:update" events via the **rWatch** API. Alternatively, you can customize the **scripts/update** shell script that will be passed the local filename containing the update.

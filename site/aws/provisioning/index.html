@@ -2547,7 +2547,7 @@
   <span class="md-ellipsis">
     
   
-    Local Device Manager
+    Device Manager
   
 
     
@@ -2558,12 +2558,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" aria-label="Local Device Manager" data-md-level="2">
+        <nav class="md-nav" aria-label="Device Manager" data-md-level="2">
           <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Local Device Manager
+    Device Manager
   
 
           </label>
@@ -3000,6 +3000,17 @@
     <span class="md-ellipsis">
       
         Device Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-claiming-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Claiming Devices
       
     </span>
   </a>
@@ -4036,6 +4047,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pre-claiming-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Claiming Devices
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4115,15 +4137,18 @@
 <h2 id="device-registration">Device Registration</h2>
 <p>Before leaving the factory, when the device first powers on during system test, the Ioto agent will start and connect to the Embedthis Ioto cloud service to register itself. This requires that your devices have an opening in the firewall to connect out to <a href="https://admin.embedthis.com">https://admin.embedthis.com</a>.</p>
 <p>The agent will send the contents of the device.json5 over an encrypted TLS connection to the Ioto cloud service. This registration request includes the device UCI and the product ID. Once received and validated, the Ioto cloud service will save the information in the Ioto device registration database.</p>
-<p>The Ioto agent then awaits for a user to claim the device.</p>
+<p>If using User-claimed devices, the Ioto agent then awaits for a user to claim the device. If using Pre-claimed devices, the Ioto agent will skip the claiming step and proceed retrieve the required MQTT certificates and securely connect to the cloud.</p>
 <h2 id="device-claiming">Device Claiming</h2>
-<p>When a user purchases or installs a device with the Ioto agent, they can "claim" the device to manage it.</p>
 <p>When creating a device cloud, Ioto creates a device manager web site for your cloud. The Ioto Device Manager is a generic (white-label) device manager for your devices. It can be extensively customized with your logo, product name and device specific screens and panels. Use the Builder to customize the Device Manager to suit your needs.</p>
+<p>When a user purchases or installs a device with the Ioto agent, they can "claim" the device to manage it.</p>
 <p>The user claims their device by logging onto the device cloud manager web site and claims the device using the UCI printed on the device label.</p>
 <p>They enter the device claim code into a form on the manager site. The device manager then provisions the necessary X.509 certificates and AWS IoT resources required to support and manage the device.</p>
 <h2 id="device-connection">Device Connection</h2>
 <p>When the device is unclaimed, the Ioto agent will regularly check with the Ioto service to see if it has been claimed. In this state, it is "unmanaged" and awaiting orders.</p>
-<p>The Ioto agent will check the Ioto service immediately on power-on, and then every 5 seconds with an exponentially increasing delay period up to a defined limit. If the device is rebooted, the polling process recommences.</p>
+<p>The Ioto device agent will check the Ioto service immediately on power-on, and then every 5 seconds with an exponentially increasing delay period up to a defined limit. If the device is rebooted, the polling process recommences.</p>
+<p>After device claiming, when the device will be provided the X.509 certificate and keys when it next connects or polls the service. The device will save the certificates and keys, then connect to the device cloud. This completes the provisioning process.</p>
+<h2 id="pre-claiming-devices">Pre-Claiming Devices</h2>
+<p>If you are using pre-claimed devices, the process is similar, except you claim the device from the Ioto Manager when the device is made. Otherwise the process is the same.</p>
 
 
 

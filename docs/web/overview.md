@@ -8,7 +8,7 @@ The Ioto web server is unlike other enterprise or embedded web servers. It does 
 
 The Ioto web server supports a cohesive feature set including: HTTP/1, HTTP/1.1, TLS/SSL, Action routines, user authentication, sessions, cookie management, request logging, and security sandboxing. Yet Ioto remains very small from 80K code and will run in as little as 200K RAM. It will serve over 3,000 requests/sec on a modest Raspberry PI.</p>
 
-<img class="fit" src="../../../images/web-server.png" alt="web server" />
+<img class="fit" src="../../images/web-server.png" alt="web server" />
 
 ## Goals
 
@@ -63,11 +63,11 @@ The Ioto web server components are:
 | Logging | Configurable request and response tracing including HTTP headers. |
 
 
-## Ioto Configuration
+## Ioto Quick Tour
 
 The web server uses a **web.json5** JSON/5 configuration file that specifies what ports and addresses to listen on, where to find the web pages, and how to route requests. This file is read when Ioto starts.
 
-The Ioto web server is enabled via the config.json5 file. Set the **services.web" property to true.
+The Ioto web server is enabled via the config.json5 file. Set the **services.web** property to true.
 
 ```javascript
 {
@@ -112,7 +112,31 @@ The **redirect** property ensures all HTTP traffic is redirected over TLS. And f
 
 See [Web Server Configuration](configuration.md) for details.
 
-### HTTP Core
+### Starting Ioto
+
+You can manually run ioto via:
+
+```bash
+ioto -v
+```
+
+This will emit:
+```bash
+app info: Ioto 1.0.2 starting
+web info: Listening http://:80
+web info: Listening https://:443
+```
+
+The **-v** means run in verbose mode where request to the server will be traced to the console. You can also run in debug mode via **-D** which emits more debug trace.
+
+### Testing
+
+You can request a file from the server now with the `curl` utility:
+
+    curl http://localhost/index.html
+
+
+### Ioto Background
 
 The Ioto HTTP core is responsible for parsing the incoming HTTP request. A HTTP request is comprised of a request line followed by one or more HTTP headers that provide additional context.
 
@@ -153,7 +177,7 @@ The HTTP core stores the parsed headers and their values for access by the reque
 
 ## Request Routing
 
-Ioto has a simple request routing engine that processes client HTTP requests and validates access using a role-based access control mechanism. The routing engine is configured with a set of routes from the Ioto configuration file. When a request is received, it examines the routes in sequence and selects the first matching route to handle the request.
+Ioto has a flexible request routing engine that processes client HTTP requests and validates access using a role-based access control mechanism. The routing engine is configured with a set of routes from the Ioto configuration file. When a request is received, it examines the routes in sequence and selects the first matching route to handle the request.
 
 Handlers are responsible for receiving the request and creating a response. They generate response content based on the HTTP request URI, headers, any associated body data, and potential application session state. The output data flows through the output pipeline before transmission over the network to the client.
 
@@ -219,4 +243,4 @@ Ioto includes an integrated JSON parser, query engine and persistency to enable 
 
 ## Ioto Kickstart
 
-Ioto includes a fully working sample single page application called Kickstart. This is a VueJS application that serves a sample device application from Ioto.
+Ioto has a fully working sample single page application called [Kickstart]. This is a VueJS application that serves a sample device application from Ioto.

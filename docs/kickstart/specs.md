@@ -4,6 +4,7 @@ Kickstart for Ioto is a VueJS application that includes the following components
 
 * Ioto HTTP web server &mdash; requires Ioto commercial license
 * [VueJS](https://vuejs.org) client-side Javascript framework
+* Cloud-based skin and theme for the Ioto Cloud Device Manager
 * Documentation
 * Samples
 * Source code
@@ -22,6 +23,13 @@ Kickstart for Ioto is a VueJS application that includes the following components
 * Search
 * Help
 * Granular access control per page
+
+## Cloud Management
+
+* Device schema to model data for storage in device and in the cloud
+* Transparent replication of device data to the cloud
+* Ioto Cloud Device Manager skin and UI theme
+* White-label via customized app name and logo
 
 ## Security
 

@@ -1,20 +1,24 @@
 # Device Management
 
-Ioto includes a sample local device manager called KickStart.
+Ioto has a sample device manager called **KickStart** that can be downloaded via the Builder.
 
-Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your embedded device management application.
+Kickstart is a fully working sample VueJS single-page application that you can use as a starting point for your device management applications.
 
 The Kickstart app demonstrates the capabilities and experience provided by an application created with Ioto and VueJS.
+
+It includes a local, embedded management app that runs within your device and serves a browser-based management user interface.
+
+It also includes a skin for the Ioto Cloud Device Manager that communicated with the embedded Kickstart/Ioto agent, but enables management of one or more devices via the cloud.
 
 ![Kickstart](../images/kickstart/home.png){.screen}
 
 ## Cloud-Based Device Management
 
-A device with the Kickstart agent can also be managed from the cloud using the Ioto Manager that is created with a device cloud.
+This skin approximates the functionality of the local Kickstart app, but allows management of multiple devices via the cloud.
 
-The Kickstart sample includes a skin for the Ioto cloud-based Device Manager under the ./cloud directory.
+The Kickstart app provides the manager cloud skin under the ./cloud/upload directory. It include a cloud device data schema (Schema.json), display definition (Display.json), logo and custom components (Components.js). These are available in the ./cloud/upload directory for upload to the Builder. Use the Builder Cloud / Edit panel and select **Update Manager UI** and upload each of these assets and save the device cloud configuration. This will recreate the Ioto Manager application.
 
-This skin provides a device data schema (Schema.json), display definition (Display.json), logo and custom components (Components.js). These are available in the ./cloud/upload directory for upload to the Builder. Use the Builder Cloud / Edit panel and select "Update Manager UI" and upload each of these assets and save the device cloud configuration. This will recreate the Ioto Manager application.
+For more details, consult the [Builder Device Manager Documentation]()
 
 ## Kickstart Specs
 
@@ -43,7 +47,7 @@ See the [Kickstart Screen Images](../screenshots/) for a close up look.</p>
 
 Kickstart is free for Ioto customers.
 
-Download from the Products page in [Embedthis Admin](https://admin.embedthis.com)
+Download from the Products page in [Embedthis Builder](https://admin.embedthis.com).
 
 ## Best Practices
 

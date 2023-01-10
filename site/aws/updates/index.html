@@ -2547,7 +2547,7 @@
   <span class="md-ellipsis">
     
   
-    Local Device Manager
+    Device Manager
   
 
     
@@ -2558,12 +2558,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" aria-label="Local Device Manager" data-md-level="2">
+        <nav class="md-nav" aria-label="Device Manager" data-md-level="2">
           <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Local Device Manager
+    Device Manager
   
 
           </label>
@@ -3870,7 +3870,7 @@
 <h2 id="checking-for-updates">Checking for Updates</h2>
 <p>The Ioto agent will issue a <strong>checkin</strong> HTTP request to the device cloud each day to query if there are any relevant updates for the device. This request submits the <strong>device.json5</strong> file and receives back a URL that refers to the update image.</p>
 <p>If there is an applicable update, Ioto will download the image, verify the contents and then signal that an update is ready.</p>
-<p>Your embedded code can watch for update events via the <strong>rWatch</strong> API. Alternatively, you can customize the <strong>scripts/update</strong> shell script that will be passed the local filename containing the update.</p>
+<p>Your embedded code can watch for "device:update" events via the <strong>rWatch</strong> API. Alternatively, you can customize the <strong>scripts/update</strong> shell script that will be passed the local filename containing the update.</p>
 
 
 

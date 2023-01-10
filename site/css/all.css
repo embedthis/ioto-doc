@@ -43,12 +43,12 @@ h1 {
 
 .hero-text {
     position: absolute;
-    margin: 210px 0 0 80px;
+    margin: 110px 0 0 80px;
     color: rgba(0, 0, 0, 0.75);
 }
 .hero-text h1 {
     font-size: 7.0em;
-    padding-top: 0.5em;
+    padding-top: 0;
     font-weight: 200;
 }
 .hero-text h2 {
